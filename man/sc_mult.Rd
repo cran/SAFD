@@ -22,7 +22,7 @@ sc_mult(X, b)
   See examples
 }
 \value{
-Given correct input data, the function returns the polygonal fuzzy number \code{b}\code{X}. In case of wrong input data, NA is returned
+Given correct input data, the function returns the polygonal fuzzy number \code{b}\code{X}.
 
 }
 \references{
@@ -40,9 +40,12 @@ See Also \code{\link{checking}}
 data(XX)
 X<-translator(XX[[1]],10)
 E<-sc_mult(X,-2)
+E
+
 
 U<-data.frame(cbind(x=c(-1,0,1),alpha=c(0,1,0)))
-sc_mult(U,2)
+E<-sc_mult(U,2)
+E
 }
 
 \keyword{ arith }

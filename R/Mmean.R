@@ -4,11 +4,7 @@ function(XX,pic=0){
   #if necessary just use translator first to assure same alpha levels
   k<-length(XX)
   X1<-Msum(XX)
-  if(nrow(X1)==1){
-   X2<-X1
-   return(X2)
-   }
-   
+  if(is.null(X1)==0){
    X2<-sc_mult(X1,1/k)
   
    #start possible plotting---------------------------------------------------
@@ -29,6 +25,7 @@ function(XX,pic=0){
      lines(X2,type="l", lwd=2,col="red") 
     }
    #end possible plotting------------------------------------------------------
-  return(X2)
+  invisible(X2)
+  }
 }
 

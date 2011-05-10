@@ -25,9 +25,12 @@ See Reference
 }
 \examples{
 data(Trees)
+M<-Mmean(Trees[[1]],1)
+head(M)
+M<-Mmean(Trees[[1]],1)
+head(M)
 Mmean(Trees[[1]],1)
-Mmean(Trees[[1]],2)
-Mmean(Trees[[1]],3)
+head(M)
 }
 \keyword{datasets}
 \keyword{list}

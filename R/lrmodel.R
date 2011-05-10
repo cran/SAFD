@@ -1,6 +1,6 @@
 lrmodel <-
 function(XX, YY){
- #given data for the regression XX and YY  of trapezoidal fuzzy sets
+ #given data for the regression XX and YY of trapezoidal fuzzy sets
  #nobs...sample size
  #in case the data is not trapezoidal it is automatically transformed to
  #trapezoidal one using the translator function
@@ -8,27 +8,23 @@ function(XX, YY){
  kx<-length(XX)
  ky<-length(YY)
 
-  if(kx!=ky){
+ if(kx!=ky){
    print("lists must have same length (i.e. input and output must have same sample size")
-   return(c(NA))
    }
- 
- nobs<-kx
- for (i in 1:nobs){
-  XX[[i]]<-translator(XX[[i]],2)
-  YY[[i]]<-translator(YY[[i]],2)
- }
+ if(kx==ky){
+  nobs<-kx
+  for (i in 1:nobs){
+   XX[[i]]<-translator(XX[[i]],2)
+   YY[[i]]<-translator(YY[[i]],2)
+  }
 
  #bind XX and YY in list to simplify check for compatibility
- ZZ<-list(length=(2*nobs))
+ ZZ<-vector("list",length=(2*nobs))
  ZZ[1:nobs]<-XX[1:nobs]
  ZZ[(nobs+1):(2*nobs)]<-YY[1:nobs]
  temp_mean<-Mmean(ZZ)
- if(nrow(temp_mean)==1){
-   return(c(NA))
- }
- 
- #calculate feasible set Feas =[-amax0,bmax0]
+ if(nrow(temp_mean)>1){
+  #calculate feasible set Feas =[-amax0,bmax0]
   XXs <-rep(0,nobs)
   YYs <-rep(0,nobs)
   XXl <-rep(0,nobs)
@@ -36,8 +32,7 @@ function(XX, YY){
   YYl <-rep(0,nobs)
   YYr <-rep(0,nobs)
   M<-data.frame(XXs=XXs,YYs=YYs,XXl=XXl,YYl=YYl,XXr=XXr,YYr=YYr)
-  
- 
+
   for(i in 1:nobs){
 	 M$XXs[i] <-0.5*(XX[[i]]$x[3]-XX[[i]]$x[2])
 	 M$YYs[i] <-0.5*(YY[[i]]$x[3]-YY[[i]]$x[2])
@@ -64,60 +59,63 @@ function(XX, YY){
 	  Feas<-c(-amax0,bmax0)
 	  }
 
- varX  <- Bvar(XX,theta=1/3)
- covXY  <- Bcov(XX,YY,theta=1/3)
- mXX<-list()
- for(i in 1:nobs){
-  mXX[[i]]<-sc_mult(XX[[i]],-1)
- }
- covmXY <- Bcov(mXX, YY,theta=1/3)
- #cat(varX, covXY, covmXY, "\n")
- #calculate beta and gamma
-  beta<-0
-  if(covmXY >0){
-   if(is.na(Feas[1])==TRUE){
+  varX  <- Bvar(XX,theta=1/3)
+  covXY  <- Bcov(XX,YY,theta=1/3)
+  mXX<-list()
+  for(i in 1:nobs){
+   mXX[[i]]<-sc_mult(XX[[i]],-1)
+  }
+  covmXY <- Bcov(mXX, YY,theta=1/3)
+  #cat(varX, covXY, covmXY, "\n")
+  #calculate beta and gamma
+   beta<-0
+   if(covmXY >0){
+    if(is.na(Feas[1])==TRUE){
     beta<-1
+    }
+    if(is.na(Feas[1])==FALSE){
+ 	 beta <- min(1,Feas[1] * varX/covmXY)
+ 	 }
+ 	}
+   gamma<-0
+   if (covXY >0){
+    if(is.na(Feas[1])==TRUE){
+     gamma<-1
+    }
+    if(is.na(Feas[1])==FALSE){
+     gamma <- min(1,Feas[2] * varX/covXY)
+ 	 }
    }
-   if(is.na(Feas[1])==FALSE){
-	 beta <- min(1,Feas[1] * varX/covmXY)
-	 } 
-	}
-  gamma<-0 
-  if (covXY >0){
-   if(is.na(Feas[1])==TRUE){
-    gamma<-1
-   }
-   if(is.na(Feas[1])==FALSE){
-    gamma <- min(1,Feas[2] * varX/covXY)
-	 }
-  } 
   #cat("beta=", beta, "gamma=", gamma, "\n")
   #print(c(beta,gamma))
  #estimate a and B
- if (gamma==0|beta==0){
+  if (gamma==0|beta==0){
   	a<-gamma*covXY/varX - beta*covmXY/varX
     Best<- hukuhara(sc_mult(Mmean(XX),a),Mmean(YY),0)
-    return(list(a=a,B=Best))
+    Result<-list(a=a,B=Best)
     }
- if (gamma!=0&beta!=0){
+  if (gamma!=0&beta!=0){
   	cond<-covmXY/covXY - (2*gamma-gamma^2)/(2*beta-beta^2)
     if(cond>0){
-    a<-beta*covmXY/varX
-    Best<- hukuhara(sc_mult(Mmean(XX),a),Mmean(YY),0)
-    return(list(a=a,B=Best))
-    }
+     a<-beta*covmXY/varX
+     Best<- hukuhara(sc_mult(Mmean(XX),a),Mmean(YY),0)
+     Result<-list(a=a,B=Best)
+     }
     if(cond<0){
-    a<-gamma*covXY/varX
-    Best<- hukuhara(sc_mult(Mmean(XX),a),Mmean(YY),0)
-    return(list(a=a,B=Best))
+     a<-gamma*covXY/varX
+     Best<- hukuhara(sc_mult(Mmean(XX),a),Mmean(YY),0)
+     Result<-list(a=a,B=Best)
     }
     if(cond==0){
-    a<-c(beta*covmXY/varX,gamma*covXY/varX)
-    B<-list(length=2)
-    B[[1]]<- hukuhara(sc_mult(Mmean(XX),a[1]),Mmean(YY),0)
-    B[[2]]<- hukuhara(sc_mult(Mmean(XX),a[2]),Mmean(YY),0)
-    return(list(a=a,B=B))
+     a<-c(beta*covmXY/varX,gamma*covXY/varX)
+     B<-vector("list",length=2)
+     B[[1]]<- hukuhara(sc_mult(Mmean(XX),a[1]),Mmean(YY),0)
+     B[[2]]<- hukuhara(sc_mult(Mmean(XX),a[2]),Mmean(YY),0)
+     Result<-list(a=a,B=B)
+     }
     }
+    invisible(Result)
    }
+ }
 }
 

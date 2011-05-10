@@ -6,21 +6,24 @@
 One-sample bootstrap test for the mean of a FRV
 }
 \description{
-Given a sample \code{XX} of polygonal fuzzy numbers and a polygonal fuzzy number \code{V} the function first checks if each element of \code{XX} and \code{V} has the correct format and if the alpha-levels of all input fuzzy numbers coincide. In case yes, the function computes the standardized mean squared Bertoluzza-distance from the sample mean to \code{V} as test-statistic. Afterwards for \code{B} bootstrap samples the (bootstrap) statistic is calculated. The returned p-value is calculated as the portion of the obtained values of the bootstrap statistic that are greater than the value of the test-statistic. Furthermore the sample mean and \code{V} are plotted. For detailed explanation see papers [1] and [2] below.
+Given a sample \code{XX} of polygonal fuzzy numbers and a polygonal fuzzy number \code{V} the function first checks if each element of \code{XX} and \code{V} has the correct format and if the alpha-levels of all input fuzzy numbers coincide. In case yes, the function computes the standardized mean squared Bertoluzza-distance from the sample mean to \code{V} as test-statistic. Afterwards for \code{B} bootstrap samples the (bootstrap) statistic is calculated. The returned p-value is calculated as the portion of the obtained values of the bootstrap statistic that are greater than the value of the test-statistic. Furthermore, if \code{pic}=1 sample mean and \code{V} are plotted in one window and the ecdf of the bootstrap statistic in another one. For detailed explanation see papers [1] and [2] below.
 }
 \usage{
-btest.mean(XX, V, B = 1000)
+btest.mean(XX, V, B = 1000, pic=1)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{XX}{
-...list of polygonal fuzzy numbers (the functions implicitly checks the conditions) 
+...list of polygonal fuzzy numbers (the functions implicitly checks the conditions). 
 }
   \item{V}{
-...polygonal fuzzy number that is tested to be the mean of the FRV
+...polygonal fuzzy number that is tested to be the mean of the FRV.
 }
   \item{B}{
 ...integer, by default \code{B}=1000.
+}
+  \item{pic}{
+...numeric, if \code{pic}=1 sample mean and \code{V} are plotted in one window and the ecdf of the bootstrap statistic in another one.
 }
 }
 \details{
@@ -48,16 +51,17 @@ See Also as \code{\link{Mmean}}, \code{\link{Bvar}}, \code{\link{bertoluzza}},  
 data(XX)
 V<-translator(XX[[3]],50)
 V2<-V
-SS<-list(length=50)
+SS<-vector("list",length=50)
 for (j in 1:50){
  SS[[j]]<-generator(V2,)
  }
-btest.mean(SS,V2,10)
+b<-btest.mean(SS,V2,10)
 
 #takes some time to run:
 #data(Trees)
 #V<-Trees[[1]][[47]]
-#btest.mean(Trees[[1]],V,100)
+#b<-btest.mean(Trees[[1]],V,100)
+#b
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

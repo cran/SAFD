@@ -5,7 +5,7 @@
 (Sample) Variance
 }
 \description{
-The sample variance of a sample of polygonal fuzzy numbers with respect to the Bertoluzza distance is calculated. Given a list \code{XX} of polygonal fuzzy numbers the function first checks (1) if each element of the list is in the correct form (tested by \code{checking}) and (2) if the alpha-levels of all elements in the list coincide. If these conditions are fulfilled the Bertoluzza sample variance will be returned (i.e. the average Bertoluzza distance of the elements of \code{XX} to its mean). If not, NA will be returned - in this case the \code{translator} function can be used to transform the elements of the list in the correct format. For details see [1] from below, and replace the kernel K with the expression induced by the Bertoluzza metric. The parameter \code{theta} has to fulfill \code{theta}>0.
+The sample variance of a sample of polygonal fuzzy numbers with respect to the Bertoluzza distance is calculated. Given a list \code{XX} of polygonal fuzzy numbers the function first checks (1) if each element of the list is in the correct form (tested by \code{checking}) and (2) if the alpha-levels of all elements in the list coincide. If these conditions are fulfilled the Bertoluzza sample variance will be returned (i.e. the average Bertoluzza distance of the elements of \code{XX} to its mean). If not the \code{translator} function can be used to transform the elements of the list in the correct format. For details see [1] from below, and replace the kernel K with the expression induced by the Bertoluzza metric. The parameter \code{theta} has to fulfill \code{theta}>0.
 }
 \usage{
 Bvar(XX, theta = 1/3)
@@ -49,15 +49,16 @@ A
 
 #Example 2:
 data(XX)
-Bvar(list(XX[[1]],XX[[1]]),1/3)
+v<-Bvar(list(XX[[1]],XX[[1]]),1/3)
+v
 
 #Example 3:
 X<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0.3,0,1,0,0.3)))
 Y<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0,0.3,1,0,0.3)))
 Z<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0,0.6,1,1,0)))
 ZZ<-list(X,Y,Z)
-A<-Bvar(ZZ,1)
-A
+v<-Bvar(ZZ,1)
+v
 
 #Example 4
 data(XX)

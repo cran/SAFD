@@ -41,25 +41,27 @@ See Also as \code{\link{checking}}, \code{\link{Mmean}}, \code{\link{hukuhara}},
 }
 \examples{
 #Example 1 (crisp case)
-XX<-list(length=2)
+XX<-vector("list",length=2)
 XX[[1]]<-data.frame(cbind(x=c(1,1,1,1),alpha=c(0,1,1,0)))
 XX[[2]]<-data.frame(cbind(x=c(2,2,2,2),alpha=c(0,1,1,0)))
 YY<-list(length=2)
 YY[[1]]<-data.frame(cbind(x=c(1,1,1,1),alpha=c(0,1,1,0)))
 YY[[2]]<-data.frame(cbind(x=c(2,2,2,2),alpha=c(0,1,1,0)))
-lrmodel(XX,YY)
+m<-lrmodel(XX,YY)
+m
 
 #Example 2:
 data(XX)
 V<-translator(XX[[3]],100)
-XX<-list(length=50)
+XX<-vector("list",length=50)
 YY<-XX
   for(i in 1:50){
    XX[[i]]<-generator(V,,,)
    YY[[i]]<-XX[[i]]
    YY[[i]]$x<-5*YY[[i]]$x+1
    }
-lrmodel(XX,YY)
+m<-lrmodel(XX,YY)
+m
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

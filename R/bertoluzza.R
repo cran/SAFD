@@ -4,9 +4,8 @@ function(X,Y,theta=1/3,pic=0){
   #fuzzy numbers, calculated via translator ->same discretization, same matrix dimensions)
   #function returns NA in case of any mistake, otherwise the Bertoluzza distance
   #if necessary just use translator(X,nl), translator(Y,nl) first
-   temp_mean<-Mmean(list(X,Y))
-   if(nrow(temp_mean)<=1){return(c(NA))}
-  
+  temp_mean<-Mmean(list(X,Y))
+  if(is.null(temp_mean)==0){
    nl<-nrow(X)/2
    z<-X$x-Y$x
    integrand1<-z[1:nl]+z[(2*nl):(nl+1)]
@@ -20,7 +19,7 @@ function(X,Y,theta=1/3,pic=0){
     y<-x[1:k]+x[2:(k+1)]
     values<-x[1:k]^2+x[2:(k+1)]^2+y^2
     integral<-sum(values)*delta/6
-    return(integral)
+    invisible(integral)
     }
   
    d1<-(l2dist2(integrand1)+theta*l2dist2(integrand2))*0.25
@@ -36,6 +35,7 @@ function(X,Y,theta=1/3,pic=0){
       title(main=titletxt,cex.main=1)
      lines(Y,type="l",lwd=1,col="black")
     }
-  return(distance)
+   invisible(distance)
+   }
  }
 

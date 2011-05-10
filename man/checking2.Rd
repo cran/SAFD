@@ -42,6 +42,7 @@ In case you find (almost surely existing) bugs or have recommendations for impro
  U<-data.frame(cbind(x=c(-1,0,1),alpha=c(0,1,0)))
  #a<-checking(U,)
  a<-checking2(U,)
+a
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

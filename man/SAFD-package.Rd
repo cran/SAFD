@@ -14,12 +14,13 @@ one-dimensional Fuzzy Data (in the form of polygonal fuzzy numbers).
 \tabular{ll}{
 Package: \tab SAFD\cr
 Type: \tab Package\cr
-Version: \tab 0.02\cr
-Date: \tab 2009-10-15\cr
+Version: \tab 0.3\cr
+Date: \tab 2011-05-04\cr
 License: \tab GPL (>=2)\cr
-LazyLoad: \tab yes\cr
+LazyLoad: \tab yes
 }
-The package allows to work with polygonal fuzzy numbers, being represented as data frames with columns x and alpha (equidistant alpha levels in [0,1]). SAFD contains functions for the basic operations on the class of fuzzy numbers (sum, scalar product, mean, Hukuhara difference) as well as for calculating (Bertoluzza-) distance, sample variance, sample covariance, sample correlation, and the Dempster-Shafer (levelwise) histogram. Moreover a function to simulate fuzzy random variables, bootstrap tests for the equality of means, and a function to do linear regression given trapezoidal fuzzy data is included.
+The aim of the package is to provide some basic functions for doing statistics with one dimensional Fuzzy Data (in the form of polygonal fuzzy numbers). In particular, the package contains functions for the basic operations on the class of fuzzy numbers (sum, scalar product, mean, Hukuhara difference, quantiles) as well as for calculating (Bertoluzza) distance, sample variance, sample covariance, sample correlation, and the Dempster-Shafer (levelwise) histogram. Moreover a function to simulate fuzzy random variables, bootstrap tests for the equality of means, and a function to do linear regression given trapezoidal fuzzy data is included.\cr
+Version 0.3 fixes some bugs of version 0.2 and includes an additional function to calculate quantiles of samples of polygonal fuzzy numbers.
 }
 \author{
 Wolfgang Trutschnig <wolfgang.trutschnig@softcomputing.es>, Asun Lubiano <lubiano@uniovi.es>

@@ -39,10 +39,12 @@ See Also as \code{\link{checking2}}, \code{\link{checking}}
 #example1:
 X<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0,0.3,1,0,0.3)))
 E<-translator(X,4)
+E
 
 #example2
 X<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0,0.6,1,1,0)))
 E<-translator(X,3)
+head(E)
 plot(X,type="l")
 lines(E,type="l",col="red")
 

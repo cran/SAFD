@@ -5,7 +5,7 @@
 Decomposer
 }
 \description{
-Given a dataframe \code{X} the function first calls \code{checking} in order to test if \code{X} is in the desired format. If yes, the dataframe \code{X} (polygonal fuzzy number) is expressed as a dataframe with (nrow(X)+1) rows as described in the paper [1] below, if no, NA is returned. The main aim of \code{generator} is to provide the simulator-function called \code{generator} with the correct input.
+Given a dataframe \code{X} the function first calls \code{checking} in order to test if \code{X} is in the desired format. If yes, the dataframe \code{X} (polygonal fuzzy number) is expressed as a dataframe with (nrow(X)+1) rows as described in the paper [1] below, if no, NULL is returned. The main aim of \code{decomposer} is to provide the simulator-function called \code{generator} with the correct input.
 }
 \usage{
 decomposer(X)
@@ -39,6 +39,7 @@ In case you find (almost surely existing) bugs or have recommendations for impro
  data(XX)
  A<-decomposer(XX[[2]])
  A<-decomposer(XX[[1]])
+head(A)
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

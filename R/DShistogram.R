@@ -1,4 +1,4 @@
-histogram <-
+DShistogram <-
 function(XX,limx=NA,npart=10,nl=101,pic=TRUE,pdf=FALSE){
  #function makes a partition of the interval stated in xlim of nbreaks elements
  #XX...fuzzy sample (list as always)
@@ -29,10 +29,10 @@ function(XX,limx=NA,npart=10,nl=101,pic=TRUE,pdf=FALSE){
   }
  
  breaks<-seq(limx[1],limx[2],length=npart+1)
- FR<-list(length=npart)
- FR2<-list(length=npart)
+ FR<-vector("list",length=npart)
+ FR2<-vector("list",length=npart)
  for (i in 1:npart){
-  FR[[i]]<-frequency(XX,breaks[i:(i+1)],0,nl)
+  FR[[i]]<-DSfrequency(XX,breaks[i:(i+1)],0,nl)
   print(i)
   R<-FR[[i]][(nl+1):(2*nl),]
   a<-approx(R$x,R$alpha,xout=ygrid,yleft=R$alpha[1],yright=R$alpha[nl],
@@ -103,16 +103,16 @@ function(XX,limx=NA,npart=10,nl=101,pic=TRUE,pdf=FALSE){
  Mp<-M[,1:cutindex]
  gridyp<-gridy[1:cutindex]
     
- persp(gridx,gridyp,Mp, xlab="x",  ylab="lower/upper frequency", zlab="alpha",
+ persp(gridx,gridyp,Mp, xlab="x",  ylab="upper/lower frequency", zlab="alpha",
     xlim=limx, main=paste("Histogram 3d",sep=""),cex.main=1,
     theta = -45, phi = 35, expand = 0.35, col=color[facetcol],
     shade = 0.25, ticktype = "detailed",border=NA)
- persp(gridx,gridyp,Mp, xlab="x",  ylab="lower/upper frequency", zlab="alpha",
+ persp(gridx,gridyp,Mp, xlab="x",  ylab="upper/lower frequency", zlab="alpha",
     xlim=limx, main=paste("Histogram 3d",sep=""),cex.main=1,
     theta = 45, phi = 35, expand = 0.35, col=color[facetcol],
     shade = 0.25, ticktype = "detailed",border=NA)
 
- image(gridx,gridyp,Mp, xlab="x",  ylab="lower/upper frequency", xlim=limx,
+ image(gridx,gridyp,Mp, xlab="x",  ylab="upper/lower frequency", xlim=limx,
           col=rainbow(100,start=.7,end=.17),cex.axis=1,
           main=paste("Histogram level view","\n",
             "(black lines denote 1-cut, white lines 0.5-cut)",sep=""),cex.main=1)
@@ -143,12 +143,12 @@ function(XX,limx=NA,npart=10,nl=101,pic=TRUE,pdf=FALSE){
   Mp<-M[,1:cutindex]
   gridyp<-gridy[1:cutindex]
       
-  persp(gridx,gridyp,Mp, xlab="x",  ylab="lower/upper frequency", zlab="alpha",
+  persp(gridx,gridyp,Mp, xlab="x",  ylab="upper/lower frequency", zlab="alpha",
     xlim=limx, main=paste("Histogram 3d",sep=""),cex.main=1,
     theta = -45, phi = 35, expand = 0.35, col=color[facetcol],
     shade = 0.25, ticktype = "detailed",border=NA)
   dev.new()  
-  image(gridx,gridyp,Mp, xlab="x",  ylab="lower/upper frequency", xlim=limx,
+  image(gridx,gridyp,Mp, xlab="x",  ylab="upper/lower frequency", xlim=limx,
           col=rainbow(100,start=.7,end=.17),cex.axis=1,
           main=paste("Histogram level view","\n",
             "(black lines denote 1-cut, white lines 0.5-cut)",sep=""),cex.main=1)

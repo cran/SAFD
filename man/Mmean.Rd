@@ -39,17 +39,21 @@ See Also as \code{\link{checking}}, \code{\link{Msum}},  \code{\link{sc_mult}},\
 \examples{
 data(XX)
 A<-Mmean(XX,1)
+A
+
 X<-translator(XX[[1]],50)
 Y<-translator(XX[[2]],50)
 Z<-translator(XX[[3]],50)
 YY<-list(X,Y,Z)
 A<-Mmean(YY,pic=1)
+A
 #
 X<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0.3,0,1,0,0.3)))
 Y<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0,0.3,1,0,0.3)))
 Z<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0,0.6,1,1,0)))
 ZZ<-list(X,Y,Z)
-Mmean(ZZ)
+M<-Mmean(ZZ)
+M
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

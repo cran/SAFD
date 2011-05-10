@@ -7,20 +7,8 @@ function(XX,YY,theta=1/3){
   ky<-length(YY)
   if(kx!=ky){
    print("lists have to have same length (i.e. same sample sizes)")
-   return(c(NA))
    }
-   
-   ZZ<-list(length=(2*kx))
-   ZZ[1:kx]<-XX[1:kx]
-   ZZ[(kx+1):(2*kx)]<-YY[1:kx]
-   
-   temp_mean<-Mmean(ZZ)
-    if(nrow(temp_mean)<=1){
-     return(c(NA))
-    }
-
-
- #------------ calculate integrals by hand as sums -----------------
+   #------------ calculate integrals by hand as sums -----------------
    int_product<-function(x,y){
     #x,y vector (first column of fuzzy set)
     #calculate integral of the product of x and y (equidistant alpha levels assumend)
@@ -33,25 +21,32 @@ function(XX,YY,theta=1/3){
      middle<-(x[1:k]+x[2:(k+1)])*(y[1:k]+y[2:(k+1)])
      values<-pr[1:k]+pr[2:(k+1)]+middle
      integral<-sum(values)*delta/6
-     return(integral)
+     invisible(integral)
      }
     }
  #----------------------------------------------------------
  #if all ok continue:
- k<-length(XX)
- EX<-Mmean(XX)
- EY<-Mmean(YY)
- nl<-nrow(XX[[1]])/2
+ if(kx==ky){
+  ZZ<-vector("list",length=(2*kx))
+  ZZ[1:kx]<-XX[1:kx]
+  ZZ[(kx+1):(2*kx)]<-YY[1:kx]
 
- midEX<-0.5*(EX$x[1:nl]+EX$x[(2*nl):(nl+1)])
- sprEX<-0.5*(EX$x[1:nl]-EX$x[(2*nl):(nl+1)])
- midEY<-0.5*(EY$x[1:nl]+EY$x[(2*nl):(nl+1)])
- sprEY<-0.5*(EY$x[1:nl]-EY$x[(2*nl):(nl+1)])
- contr_Emids<-int_product(midEX,midEY)
- contr_Espreads<-int_product(sprEX,sprEY)
+  temp_mean<-Mmean(ZZ)
+  if(nrow(temp_mean)>1){
+   k<-length(XX)
+   EX<-Mmean(XX)
+   EY<-Mmean(YY)
+   nl<-nrow(XX[[1]])/2
 
- contr_mids<-rep(0,k)
- contr_spreads<-rep(0,k)
+   midEX<-0.5*(EX$x[1:nl]+EX$x[(2*nl):(nl+1)])
+   sprEX<-0.5*(EX$x[1:nl]-EX$x[(2*nl):(nl+1)])
+   midEY<-0.5*(EY$x[1:nl]+EY$x[(2*nl):(nl+1)])
+   sprEY<-0.5*(EY$x[1:nl]-EY$x[(2*nl):(nl+1)])
+   contr_Emids<-int_product(midEX,midEY)
+   contr_Espreads<-int_product(sprEX,sprEY)
+
+   contr_mids<-rep(0,k)
+   contr_spreads<-rep(0,k)
 
  for(i in 1:k){
    z<-XX[[i]]$x
@@ -66,7 +61,8 @@ function(XX,YY,theta=1/3){
    }
    
  cova<-(sum(contr_mids)-contr_Emids + theta*(sum(contr_spreads)-contr_Espreads))
- return(cova)
-   
+ invisible(cova)
+  }
+ }
 }
 

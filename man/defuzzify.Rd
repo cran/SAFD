@@ -44,6 +44,7 @@ for (j in 1:150){
  SS[[j]]<-generator(V2,)
  }
 a<-defuzzify(SS)
+a
 
 #
 X<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0.3,0,1,0,0.3)))
@@ -51,16 +52,19 @@ Y<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0,0.3,1,0,0.3)))
 Z<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0,0.6,1,1,0)))
 FF<-list(Z,X,Y)
 a<-defuzzify(FF)
+a
 
-RR<-list(length=1503)
+RR<-vector("list",length=1503)
 RR[1:3]<-FF
 RR[4:1503]<-SS
 a<-defuzzify(RR)
+a
 
-RR<-list(length=1501)
+RR<-vector("list",length=1501)
 RR[1]<-FF[1]
 RR[2:1501]<-SS
 a<-defuzzify(RR)
+a
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

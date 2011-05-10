@@ -51,29 +51,35 @@ X<-translator(XX[[1]],50)
 Y<-translator(XX[[2]],50)
 Z<-translator(XX[[3]],50)
 ZZ<-list(X,Y,Z)
-bertoluzza(X,Y,1/3,1)
+b<-bertoluzza(X,Y,1/3,1)
+b
 
 #example (SLLN for the FRV)
 V<-translator(XX[[3]],100)
-YY<-list(length=50)
+YY<-vector("list",length=50)
   for(i in 1:50){
    YY[[i]]<-generator(V,,,)
    }
 M<-Mmean(YY)
-bertoluzza(M,V,1/3,1) 
+head(M)
+b<-bertoluzza(M,V,1/3,1) 
+b
 
 V<-translator(XX[[3]],100)
-YY<-list(length=1000)
+YY<-vector("list",length=1000)
   for(i in 1:1000){
    YY[[i]]<-generator(V,,,)
    }
 M<-Mmean(YY)
-bertoluzza(M,V,1/3,1)  
+head(M)
+b<-bertoluzza(M,V,1/3,1)  
+b
 
 #
 X<-data.frame(x=c(0,1,1,2),alpha=c(0,1,1,0))
 Y<-data.frame(x=c(0,1,2),alpha=c(0,1,0))
-bertoluzza(X,Y,1/3,1)
+b<-bertoluzza(X,Y,1/3,1)
+b
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.

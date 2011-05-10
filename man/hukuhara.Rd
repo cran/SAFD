@@ -45,13 +45,16 @@ See Also as \code{\link{checking}}, \code{\link{lrmodel}}
 Y<-data.frame(x=c(0,0,0,1,2,2),alpha=c(0,0.5,1,1,0.5,0))
 X<-data.frame(x=c(0,0,0,0,1.5,2),alpha=c(0,0.5,1,1,0.5,0))
 Z<-data.frame(x=c(0,0,0,0.75,1.5,1.5),alpha=c(0,0.5,1,1,0.5,0))
-hukuhara(X,Y,1)
-hukuhara(Z,Y,1)
+h<-hukuhara(X,Y,1)
+h
+h<-hukuhara(Z,Y,1)
+h
 
 #Example 2:
 Y<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0.3,0,1,0,0.3)))
 X<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0,0.6,1,1,0)))
-hukuhara(X,Y)
+h<-hukuhara(X,Y)
+h
 
 #Example 3: in this case the hukuhara diff has to exist by construction
 data(XX)
@@ -59,7 +62,7 @@ X<-translator(XX[[1]],50)
 shift<-seq(-1,1,length=100)
 Y<-X
 Y$x<-X$x+shift
-hukuhara(X,Y,1)
+h<-hukuhara(X,Y,1)
 
 #Example 4: in this case the hukuhara diff has to exist by construction
 data(XX)
@@ -68,6 +71,7 @@ shift<-seq(-1,1,length=10000)
 Y<-X
 Y$x<-X$x+shift
 H<-hukuhara(X,Y,1)
+H
  }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
 % R documentation directory.
