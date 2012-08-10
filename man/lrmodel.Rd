@@ -31,7 +31,7 @@ Given input \code{XX}, \code{YY} in the correct format the function returns a li
 [2] Gil, M.A., Lopez, M.T., Lubiano, M.A., Montenegro, M.: \emph{Regression and correlation analyses of a linear relation between random intervals}, Test, 10(1), pp. 183-201 (2001)
 }
 \author{
-Wolfgang Trutschnig <wolfgang.trutschnig@softcomputing.es>, Asun Lubiano <lubiano@uniovi.es>
+Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 }
 \note{
 In case you find (almost surely existing) bugs or have recommendations for improving the functions comments are welcome to the above mentioned mail addresses.

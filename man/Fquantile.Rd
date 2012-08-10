@@ -24,11 +24,8 @@ See examples.
 \value{
 Given correct input \code{XX} the function returns a  list of quantiles.
 }
-\references{
-%% ~put references to the literature/web site here ~
-}
 \author{
-Wolfgang Trutschnig <wolfgang.trutschnig@softcomputing.es>, Asun Lubiano <lubiano@uniovi.es>
+Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 }
 \note{
 In case you find (almost surely existing) bugs or have recommendations for improving the functions comments are welcome to the above mentioned mail addresses.

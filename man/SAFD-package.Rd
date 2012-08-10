@@ -1,5 +1,5 @@
 \name{SAFD-package}
-\Rdversion{0.02}
+\Rdversion{0.4}
 \alias{SAFD-package}
 \alias{SAFD}
 \docType{package}
@@ -14,18 +14,18 @@ one-dimensional Fuzzy Data (in the form of polygonal fuzzy numbers).
 \tabular{ll}{
 Package: \tab SAFD\cr
 Type: \tab Package\cr
-Version: \tab 0.3\cr
-Date: \tab 2011-05-04\cr
+Version: \tab 0.4\cr
+Date: \tab 2012-08-10\cr
 License: \tab GPL (>=2)\cr
 LazyLoad: \tab yes
 }
 The aim of the package is to provide some basic functions for doing statistics with one dimensional Fuzzy Data (in the form of polygonal fuzzy numbers). In particular, the package contains functions for the basic operations on the class of fuzzy numbers (sum, scalar product, mean, Hukuhara difference, quantiles) as well as for calculating (Bertoluzza) distance, sample variance, sample covariance, sample correlation, and the Dempster-Shafer (levelwise) histogram. Moreover a function to simulate fuzzy random variables, bootstrap tests for the equality of means, and a function to do linear regression given trapezoidal fuzzy data is included.\cr
-Version 0.3 fixes some bugs of version 0.2 and includes an additional function to calculate quantiles of samples of polygonal fuzzy numbers.
+Version 0.4 fixes some bugs of version 0.3 and includes an additional function to calculate quantiles of samples of polygonal fuzzy numbers.
 }
 \author{
-Wolfgang Trutschnig <wolfgang.trutschnig@softcomputing.es>, Asun Lubiano <lubiano@uniovi.es>
+Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 
-Maintainer: Wolfgang Trutschnig <wolfgang.trutschnig@softcomputing.es>, Asun Lubiano <lubiano@uniovi.es>
+Maintainer: Wolfgang Trutschnig <wolfgang@trutschnig.net>
 }
 \references{
  [1] Bertoluzza, C., Corral, N., Salas, A.: \emph{On a new class of distances between fuzzy numbers}, Mathware Soft Comput., 2, pp:71-84 (1995)\cr
@@ -45,6 +45,4 @@ Maintainer: Wolfgang Trutschnig <wolfgang.trutschnig@softcomputing.es>, Asun Lub
 \keyword{ package }
 \seealso{
  \url{http://bellman.ciencias.uniovi.es/SMIRE/}
-}
-\examples{
 }

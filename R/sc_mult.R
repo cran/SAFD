@@ -22,4 +22,3 @@ function(X,b){
  invisible(E)
  }
 }
-

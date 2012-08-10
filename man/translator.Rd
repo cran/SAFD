@@ -24,10 +24,8 @@ See examples
 \value{
  \item{comp1 }{In case checking2(X)=1 \code{translator} returns a dataframe (fuzzy number) with \code{nl} number of alpha-levels, otherwise the input is returned unchanged.}
 }
-\references{
-}
 \author{
-Wolfgang Trutschnig <wolfgang.trutschnig@softcomputing.es>, Asun Lubiano <lubiano@uniovi.es>
+Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 }
 \note{
 In case you find (almost surely existing) bugs or have recommendations for improving the functions comments are welcome to the above mentioned mail addresses.

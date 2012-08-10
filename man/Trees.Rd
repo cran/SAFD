@@ -16,8 +16,6 @@ n3=37 rowans. Each tree was assigned a trapezoidal fuzzy number that models the 
 \details{
 See Reference
 }
-\source{
-}
 \references{
  [1] Colubi, A.: \emph{Statistical inference about the means of fuzzy random variables:
       Applications to the analysis of fuzzy- and real-valued data}, Fuzzy Sets and Systems,

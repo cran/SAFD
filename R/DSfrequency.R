@@ -84,4 +84,3 @@ function(XX,IV=c(0,1),pic=1,nl=101){
  }
  }
 }
-

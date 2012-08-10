@@ -19,4 +19,3 @@ function(XX,theta=1/3){
   invisible(v)
  }
 }
-

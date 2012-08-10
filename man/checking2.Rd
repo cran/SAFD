@@ -26,10 +26,8 @@ See examples
 \value{
 The function returns the value 1 if the input fulfills all conditions, if not, 0 is returned. 
 }
-\references{
-}
 \author{
-Wolfgang Trutschnig <wolfgang.trutschnig@softcomputing.es>, Asun Lubiano <lubiano@uniovi.es>
+Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 }
 \note{
 In case you find (almost surely existing) bugs or have recommendations for improving the functions comments are welcome to the above mentioned mail addresses.

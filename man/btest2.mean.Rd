@@ -38,7 +38,7 @@ Given input \code{XX} and \code{YY} in the correct format, the function returns 
 [2] Montenegro, M., Casals, M.R., Lubiano, M.A., Gil, M.A.: \emph{Two-sample hypothesis tests of means of a fuzzy random variable}, Information Sciences, Vol. 133(1-2), pp. 89-100 (2001)
 }
 \author{
-Wolfgang Trutschnig <wolfgang.trutschnig@softcomputing.es>, Asun Lubiano <lubiano@uniovi.es>
+Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 }
 \note{
 The function is quite slow - we will try to solve this problem in the next versions of the package.\cr

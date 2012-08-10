@@ -77,4 +77,3 @@ function(X,com=1){
  }
  invisible(min(temp))
 }
-

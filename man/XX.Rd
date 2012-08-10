@@ -15,10 +15,6 @@ Example data
 \details{
 See examples
 }
-\source{
-}
-\references{
-}
 \examples{
 data(XX)
 V<-translator(XX[[1]],50)

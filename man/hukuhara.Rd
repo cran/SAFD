@@ -28,10 +28,8 @@ See examples
 \value{
 In case the input data is in the correct form and the Hukuhara difference exists, the Hukuhara difference is returned, in case not, NA is returned.
 }
-\references{
-}
 \author{
-Wolfgang Trutschnig <wolfgang.trutschnig@softcomputing.es>, Asun Lubiano <lubiano@uniovi.es>
+Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 }
 \note{
 In case you find (almost surely existing) bugs or have recommendations for improving the functions comments are welcome to the above mentioned mail addresses.

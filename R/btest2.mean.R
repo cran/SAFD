@@ -73,4 +73,3 @@ function(XX,YY,B=1000,pic=1){
  invisible(pvalue)
  }
 }
-

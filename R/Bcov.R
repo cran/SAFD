@@ -65,4 +65,3 @@ function(XX,YY,theta=1/3){
   }
  }
 }
-

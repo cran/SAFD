@@ -28,4 +28,3 @@ function(XX,pic=0){
   invisible(X2)
   }
 }
-

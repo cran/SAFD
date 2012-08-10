@@ -26,4 +26,3 @@ function(X,nl=101){
   invisible(E)
  }
 }
-

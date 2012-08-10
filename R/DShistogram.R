@@ -160,4 +160,3 @@ function(XX,limx=NA,npart=10,nl=101,pic=TRUE,pdf=FALSE){
  H<-list(gridx=gridx,gridy=gridy,M=M,breaks=breaks)
 invisible(H)
 }
-

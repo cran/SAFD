@@ -25,10 +25,8 @@ sc_mult(X, b)
 Given correct input data, the function returns the polygonal fuzzy number \code{b}\code{X}.
 
 }
-\references{
-}
 \author{
-Wolfgang Trutschnig <wolfgang.trutschnig@softcomputing.es>, Asun Lubiano <lubiano@uniovi.es>
+Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 }
 \note{
 In case you find (almost surely existing) bugs or have recommendations for improving the functions comments are welcome to the above mentioned mail addresses.

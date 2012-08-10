@@ -143,4 +143,3 @@ function(XXX, sel, B=50,pic=1){
  }
  }
 }
-

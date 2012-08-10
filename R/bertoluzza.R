@@ -38,4 +38,3 @@ function(X,Y,theta=1/3,pic=0){
    invisible(distance)
    }
  }
-

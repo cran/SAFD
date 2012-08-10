@@ -38,7 +38,7 @@ Given input \code{XXX} in the correct format, the function returns the p-value o
 [2] Gil, M.A.; Montenegro, M.; Gonzalez-Rodriguez, G.; Colubi, A.; Casals, R.: \emph{Bootstrap approach to the multi-sample test of means with imprecise data}, Computational Statistics and Data Analysis, 51(1), pp. 148-162  (2006)
 }
 \author{
-Wolfgang Trutschnig <wolfgang.trutschnig@softcomputing.es>, Asun Lubiano <lubiano@uniovi.es>
+Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 }
 \note{
 The function is quite slow - we will try to solve this problem in the next versions of the package.\cr

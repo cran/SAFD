@@ -37,7 +37,7 @@ Given correct input data, the function returns a polygonal fuzzy number that can
 [1] Gonzalez-Rodriguez, G., Colubi, A., Trutschnig, W.: \emph{Simulation of fuzzy random variables},  Information Sciences, 179(5), pp. 642-653 (2009)
 }
 \author{
-Wolfgang Trutschnig <wolfgang.trutschnig@softcomputing.es>, Asun Lubiano <lubiano@uniovi.es>
+Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 }
 \note{
 In case you find (almost surely existing) bugs or have recommendations for improving the functions comments are welcome to the above mentioned mail addresses.

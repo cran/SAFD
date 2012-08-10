@@ -37,7 +37,7 @@ Given input \code{XX} and \code{V} in the correct format, the function returns t
 [2] Montenegro, M., Colubi, A., Casals, M.R., Gil, M.A.: \emph{Asymptotic and bootstrap techniques for testing the expected value of a fuzzy random variable}, Metrika, 59, pp. 31-49  (2004)
 }
 \author{
-Wolfgang Trutschnig <wolfgang.trutschnig@softcomputing.es>, Asun Lubiano <lubiano@uniovi.es>
+Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 }
 \note{
 The function is quite slow - we will try to solve this problem in the next versions of the package.\cr

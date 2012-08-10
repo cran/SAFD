@@ -47,4 +47,3 @@ function(XX){
   invisible(R)
   }
 }
-

@@ -25,4 +25,3 @@ function(XX,pic=1){
   invisible(Q)
  }
 }
-

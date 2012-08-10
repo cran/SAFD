@@ -22,4 +22,3 @@ function(XX){
   invisible(a)
   }
 }
-

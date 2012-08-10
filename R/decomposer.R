@@ -17,4 +17,3 @@ function(X){
   invisible(Coordinates)
  }
 }
-
