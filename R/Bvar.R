@@ -1,8 +1,8 @@
 Bvar <-
 function(XX,theta=1/3){
-  #calculates the variance of k polygonial fuzzy numbers with same levels
+  #calculates the variance of k polygonal fuzzy numbers with same levels
   #if necessary just use translator first to assure same alpha levels
-  #theta is weight in the def of the bertoluzza metric
+  #theta ... is weight in the def of the bertoluzza metric
   sample_mean<-Mmean(XX,0)
   if(is.null(sample_mean)==0){
    if(length(XX)==1){

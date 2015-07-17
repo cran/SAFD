@@ -1,8 +1,8 @@
 Bcov <-
 function(XX,YY,theta=1/3){
-  #calculates the empirical covariance of two lists of polygonial fuzzy numbers with same levels
+  #calculates the empirical covariance of two lists of polygonal fuzzy numbers with same levels
   #if necessary just use translator first to assure same alpha levels
-  #theta is weight in the def of the bertoluzza metric
+  #theta ... is weight in the def of the bertoluzza metric
   kx<-length(XX)
   ky<-length(YY)
   if(kx!=ky){
@@ -11,7 +11,7 @@ function(XX,YY,theta=1/3){
    #------------ calculate integrals by hand as sums -----------------
    int_product<-function(x,y){
     #x,y vector (first column of fuzzy set)
-    #calculate integral of the product of x and y (equidistant alpha levels assumend)
+    #calculate integral of the product of x and y (equidistant alpha levels assumed)
     #product of x and y is piecewise quadratic function - integrate via simpson rule
     if(length(x)!=length(y)){return(print("input vectors must have same length"))}
     if(length(x)==length(y)){
@@ -31,8 +31,8 @@ function(XX,YY,theta=1/3){
   ZZ[1:kx]<-XX[1:kx]
   ZZ[(kx+1):(2*kx)]<-YY[1:kx]
 
-  temp_mean<-Mmean(ZZ)
-  if(nrow(temp_mean)>1){
+  temp_sum<-Msum(ZZ)
+  if(nrow(temp_sum)>1){
    k<-length(XX)
    EX<-Mmean(XX)
    EY<-Mmean(YY)

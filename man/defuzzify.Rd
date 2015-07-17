@@ -1,5 +1,4 @@
 \name{defuzzify}
-\Rdversion{1.1}
 \alias{defuzzify}
 \title{
 Defuzzification
@@ -29,38 +28,40 @@ Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 In case you find (almost surely existing) bugs or have recommendations for improving the functions comments are welcome to the above mentioned mail addresses.
 }
 \examples{
+#Example:
 data(XX)
 V<-translator(XX[[3]],50)
 V2<-V
 V2$x<-V$x/20
-SS<-list(length=150)
+SS<-vector("list",length=150)
 for (j in 1:150){
  SS[[j]]<-generator(V2,)
  }
 a<-defuzzify(SS)
 a
 
-#
-X<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0.3,0,1,0,0.3)))
-Y<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0,0.3,1,0,0.3)))
-Z<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0,0.6,1,1,0)))
-FF<-list(Z,X,Y)
-a<-defuzzify(FF)
-a
 
-RR<-vector("list",length=1503)
-RR[1:3]<-FF
-RR[4:1503]<-SS
-a<-defuzzify(RR)
-a
-
-RR<-vector("list",length=1501)
-RR[1]<-FF[1]
-RR[2:1501]<-SS
-a<-defuzzify(RR)
-a
+## The function is currently defined as
+function (XX) 
+{
+    temp_sum <- Msum(XX, 0)
+    if (is.null(temp_sum) == 0) {
+        defuzz <- function(X) {
+            nl <- nrow(X)/2
+            mids <- (X$x[1:nl] + X$x[(2 * nl):(nl + 1)])/2
+            values <- mids[2:nl] + mids[1:(nl - 1)]
+            delta <- 1/(nl - 1)
+            integral <- sum(values) * delta/2
+            return(integral)
+        }
+        k <- length(XX)
+        a <- rep(0, k)
+        for (i in 1:k) {
+            a[i] <- defuzz(XX[[i]])
+        }
+        invisible(a)
+    }
+  }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
 \keyword{ manip }
-\keyword{ datagen }% __ONLY ONE__ keyword per line
+\keyword{ datagen }

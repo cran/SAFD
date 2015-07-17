@@ -1,6 +1,6 @@
 sc_mult <-
-function(X,b){
- #calculates scalar multiplication of polygonial fuzzy number X with scalar b
+function(X,b,pic=0){
+ #calculates scalar multiplication of polygonal fuzzy number X with scalar b
  #X has to be in the same format as the output of the translator function
  ok<-checking(X)
  if(ok==1){
@@ -19,6 +19,14 @@ function(X,b){
    sc$x<-temp[length(temp):1]
    E<-sc
   }
- invisible(E)
+  if(pic==1){
+     limx<-c(min(c(X$x,E$x))-0.25,max(c(X$x,E$x))+0.25)
+  plot(X,type="l",xlim=limx, xlab=NA, ylab=expression(alpha), col="gray",lwd=2, cex.main=1)
+  titletxt <- substitute("Fuzzy number (in gray) and their product by " * b * " (in black)" , list(b = as.character(b)))
+      title(main=titletxt,cex.main=1)
+ lines(E,type="l",lwd=2)
+   }
+
+invisible(E)
  }
 }

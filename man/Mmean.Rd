@@ -1,11 +1,10 @@
 \name{Mmean}
-\Rdversion{1.1}
 \alias{Mmean}
 \title{
 Minkowski mean
 }
 \description{
-Given a sample \code{XX} of polygonal fuzzy numbers the Minkowski-mean of the sample is calculated. The function fist calls \code{Msum} to check if \code{XX} has the correct format and, in case yes, \code{sc_mult} to calculate the Minkowski-mean of the fuzzy sample \code{XX}. If \code{pic}=1 then the sample and its mean are plotted, otherwise no plot is produced.
+Given a sample \code{XX} of polygonal fuzzy numbers the Minkowski-mean of the sample is calculated. The function fist calls \code{Msum} to check if \code{XX} has the correct format and, in case yes, \code{sc_mult} is used to calculate the Minkowski-mean of the fuzzy sample \code{XX}. If \code{pic}=1 then the sample and its mean are plotted, otherwise no plot is produced.
 }
 \usage{
 Mmean(XX, pic = 0)
@@ -31,12 +30,12 @@ Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 In case you find (almost surely existing) bugs or have recommendations for improving the functions comments are welcome to the above mentioned mail addresses.
 }
 \seealso{
-See Also as \code{\link{checking}}, \code{\link{Msum}},  \code{\link{sc_mult}},\code{\link{translator}} 
+See Also as \code{\link{checking}}, \code{\link{translator}}, \code{\link{Msum}}, \code{\link{sc_mult}}, \code{\link{Bvar}} 
 }
 \examples{
+#Example 1:
 data(XX)
 A<-Mmean(XX,1)
-A
 
 X<-translator(XX[[1]],50)
 Y<-translator(XX[[2]],50)
@@ -44,15 +43,50 @@ Z<-translator(XX[[3]],50)
 YY<-list(X,Y,Z)
 A<-Mmean(YY,pic=1)
 A
-#
-X<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0.3,0,1,0,0.3)))
-Y<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0,0.3,1,0,0.3)))
-Z<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0,0.6,1,1,0)))
-ZZ<-list(X,Y,Z)
-M<-Mmean(ZZ)
-M
+
+#Example 2:
+data(Trees)
+Species1_Mean<-Mmean(Trees[[1]],1)
+Species1_Mean
+Species2_Mean<-Mmean(Trees[[2]],1)
+Species2_Mean
+Species3_Mean<-Mmean(Trees[[3]],1)
+Species3_Mean
+
+#Example 3:
+data(quality)
+Soilquality_Mean<-Mmean(quality$land,1)
+Soilquality_Mean
+Treesquality_Mean<-Mmean(quality$trees,1)
+Treesquality_Mean
+
+## The function is currently defined as
+function (XX, pic = 0) 
+{
+    k <- length(XX)
+    X1 <- Msum(XX)
+    if (is.null(X1) == 0) {
+        X2 <- sc_mult(X1, 1/k)
+        if (pic == 1) {
+            lower <- rep(0, k)
+            upper <- lower
+            for (j in 1:k) {
+                lower[j] <- min(XX[[j]])
+                upper[j] <- max(XX[[j]])
+            }
+            limx <- c(min(lower) - 0.25, max(upper) + 0.25)
+            plot(XX[[1]], type = "l", xlim = limx, lwd = 0.3, 
+                xlab = NA, ylab = expression(alpha), cex.main = 1, 
+                col = "gray", main = paste("Sample (in gray) and sample mean (in black)", 
+                  sep = ""))
+            for (j in 2:k) {
+                lines(XX[[j]], type = "l", lwd = 0.3, col = "gray")
+            }
+            lines(X2, type = "l", lwd = 2, col = "black")
+        }
+        invisible(X2)
+    }
+  }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
 \keyword{ univar }
 \keyword{ manip }

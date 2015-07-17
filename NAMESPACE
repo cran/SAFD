@@ -1,1 +1,4 @@
 exportPattern("^[[:alpha:]]+")
+importFrom(stats, approx, complete.cases,ecdf,median,rchisq,rexp,rlnorm,rnorm,runif)
+importFrom(graphics, abline, contour, image, legend, lines, mtext, persp, plot, title) 
+importFrom(grDevices, colorRampPalette, dev.new, dev.off, rainbow)

@@ -1,8 +1,9 @@
 Msum <-
-function(XX){
-  #calculates the Minkowski sum of k polygonial fuzzy numbers with same levels
+function(XX,pic=0){
+  #calculates the Minkowski sum of k polygonal fuzzy numbers with same levels
   #if necessary just use translator first to assure same alpha levels
-  #if check is not okay or if sample elements have different alpha levels NA is returned
+  #if check is not ok or if sample elements have different alpha levels NA is returned
+  #if list contain missing values if necessary just use omitNA first
   k<-length(XX)
   temp<-rep(0,k)
   for (i in 1:k){
@@ -10,8 +11,8 @@ function(XX){
   }
   ok<-1
   if(min(temp)==0){
-   print(paste("One or more elements of the sample don't define a polygonal fuzzy number"))
-   print(paste("or are not in the correct format"))
+   print(paste("One or more elements of the list don't define a polygonal fuzzy number"))
+   print(paste("use checking function to specify the violations in the definition of a poligonal fuzzy number"))
    ok<-0
    }
   if(min(temp)==1){
@@ -22,7 +23,7 @@ function(XX){
      number[i]<-nrow(XX[[i]])
      }
     if(max(number)!=min(number)){
-     print("use translator function to assure that list elements are compatibel (same alpha levels)")
+     print("use translator function to assure that list elements are compatible (same alpha levels)")
      ok<-0
      }
     if(max(number)==min(number)){
@@ -31,7 +32,7 @@ function(XX){
       equal[i]<-max(abs(XX[[1]]$alpha-XX[[i]]$alpha))
       }
      if(max(equal)>0){
-      print("use translator function to assure that list elements are compatibel (same alpha levels)")
+      print("use translator function to assure that list elements are compatible (same alpha levels)")
       ok<-0
      }
      }
@@ -44,6 +45,26 @@ function(XX){
     }
    }
    if(ok==1){
-  invisible(R)
+   #start possible plotting---------------------------------------------------
+   if(pic==1){
+      #calculate plot limits:
+       lower<-rep(0,k)
+       upper<-lower
+        for (j in 1:k){
+         lower[j]<-min(XX[[j]])
+         upper[j]<-max(XX[[j]])
+        }
+       limx<-c(min(c(lower,R$x))-0.25,max(c(upper,R$x))+0.25)
+     plot(XX[[1]],type="l", xlim=limx,lwd=0.3,xlab=NA, ylab=expression(alpha),cex.main=1, col="gray",
+          main=paste("Sum (in black) of fuzzy numbers (in gray)",sep=""))
+     for (j in 2:k){
+      lines(XX[[j]],type="l",lwd=0.3,col="gray")
+      }
+     lines(R,type="l",lwd=2,col="black")
+
+    }
+   #end possible plotting------------------------------------------------------
+
+invisible(R)
   }
 }

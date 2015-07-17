@@ -1,7 +1,8 @@
 translator <-
-function(X,nl=101){
- #X...2-dim data.frame with colums "x" and "alpha" containing the vertexes of the polygonial fuzzy number
- #nl...numer of levels that shall be calculated, uniformly in [0,1], at least 2
+function(X,nl=101,pic=0){
+ #X...2-dim data.frame with columns "x" and "alpha" 
+ #containing the vertexes of the polygonal fuzzy number
+ #nl...number of levels that shall be calculated, uniformly in [0,1], at least 2
  ok<-checking2(X)
  if(nl<=1){
   print("Minimum number of output levels nl is 2")
@@ -23,6 +24,13 @@ function(X,nl=101){
   R3<-R2[nrow(R2):1,]
   R4<-data.frame(x=R3[,1],alpha=R3[,2])
   E<-rbind(L4,R4)
+  if(pic==1){
+  limx<-c(min(c(X$x,E$x))-0.25,max(c(X$x,E$x))+0.25)
+ plot(X,type="l",xlim=limx, xlab=NA, ylab=expression(alpha), col="gray", lwd=1.5, cex.main=1)
+  titletxt <- substitute("Fuzzy number (in gray) and their " * nl * "-Translator (in black)" , list(nl = as.character(nl)))
+      title(main=titletxt,cex.main=1)
+ lines(E,type="b",lwd=2,  pch = 21)
+   }
   invisible(E)
  }
 }

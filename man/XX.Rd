@@ -1,16 +1,15 @@
 \name{XX}
-\Rdversion{1.1}
 \alias{XX}
 \docType{data}
 \title{
 Example data
 }
 \description{
-\code{XX} is a list of three polygonal fuzzy numbers that is used in the given examples.   
+\code{XX} is a list of three polygonal fuzzy numbers that is used in the given examples.
 }
 \usage{data(XX)}
 \format{
-  List of three polygonal fuzzy numbers
+  List of three polygonal fuzzy numbers.
 }
 \details{
 See examples
@@ -27,5 +26,4 @@ head(M)
 b<-bertoluzza(M,V,1/3,1) 
 b 
 }
-
 \keyword{datasets}

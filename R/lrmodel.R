@@ -1,5 +1,5 @@
 lrmodel <-
-function(XX, YY){
+function(XX, YY,theta=1/3){
  #given data for the regression XX and YY of trapezoidal fuzzy sets
  #nobs...sample size
  #in case the data is not trapezoidal it is automatically transformed to
@@ -22,8 +22,8 @@ function(XX, YY){
  ZZ<-vector("list",length=(2*nobs))
  ZZ[1:nobs]<-XX[1:nobs]
  ZZ[(nobs+1):(2*nobs)]<-YY[1:nobs]
- temp_mean<-Mmean(ZZ)
- if(nrow(temp_mean)>1){
+ temp_sum<-Msum(ZZ)
+ if(nrow(temp_sum)>1){
   #calculate feasible set Feas =[-amax0,bmax0]
   XXs <-rep(0,nobs)
   YYs <-rep(0,nobs)
@@ -59,13 +59,13 @@ function(XX, YY){
 	  Feas<-c(-amax0,bmax0)
 	  }
 
-  varX  <- Bvar(XX,theta=1/3)
-  covXY  <- Bcov(XX,YY,theta=1/3)
+  varX  <- Bvar(XX,theta)
+  covXY  <- Bcov(XX,YY,theta)
   mXX<-list()
   for(i in 1:nobs){
    mXX[[i]]<-sc_mult(XX[[i]],-1)
   }
-  covmXY <- Bcov(mXX, YY,theta=1/3)
+  covmXY <- Bcov(mXX, YY,theta)
   #cat(varX, covXY, covmXY, "\n")
   #calculate beta and gamma
    beta<-0

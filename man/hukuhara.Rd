@@ -1,7 +1,5 @@
 \name{hukuhara}
-\Rdversion{1.1}
 \alias{hukuhara}
-%- Also NEED an '\alias' for EACH other topic documented here.
 \title{
 Hukuhara Difference
 }
@@ -36,33 +34,28 @@ In case you find (almost surely existing) bugs or have recommendations for impro
 }
 
 \seealso{
-See Also as \code{\link{checking}}, \code{\link{lrmodel}}
+See Also as \code{\link{checking}}, \code{\link{Msum}}, \code{\link{lrmodel}}
 }
 \examples{
 #Example 1:
 Y<-data.frame(x=c(0,0,0,1,2,2),alpha=c(0,0.5,1,1,0.5,0))
 X<-data.frame(x=c(0,0,0,0,1.5,2),alpha=c(0,0.5,1,1,0.5,0))
 Z<-data.frame(x=c(0,0,0,0.75,1.5,1.5),alpha=c(0,0.5,1,1,0.5,0))
-h<-hukuhara(X,Y,1)
-h
-h<-hukuhara(Z,Y,1)
-h
+h1<-hukuhara(X,Y,1)
+h1
+h2<-hukuhara(Z,Y,1)
+h2
 
-#Example 2:
-Y<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0.3,0,1,0,0.3)))
-X<-data.frame(cbind(x=c(-2,-0.75,-0.25,0.5,1),alpha=c(0,0.6,1,1,0)))
-h<-hukuhara(X,Y)
-h
-
-#Example 3: in this case the hukuhara diff has to exist by construction
+#Example 2: in this case the hukuhara diff has to exist by construction
 data(XX)
 X<-translator(XX[[1]],50)
 shift<-seq(-1,1,length=100)
 Y<-X
 Y$x<-X$x+shift
 h<-hukuhara(X,Y,1)
+h
 
-#Example 4: in this case the hukuhara diff has to exist by construction
+#Example 3: in this case the hukuhara diff has to exist by construction
 data(XX)
 X<-translator(XX[[1]],5000)
 shift<-seq(-1,1,length=10000)
@@ -70,8 +63,36 @@ Y<-X
 Y$x<-X$x+shift
 H<-hukuhara(X,Y,1)
 H
- }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
+## The function is currently defined as
+function (X, Y, pic = 1) 
+{
+    temp_sum <- Msum(list(X, Y))
+    if (is.null(temp_sum) == 0) {
+        nl <- nrow(X)/2
+        dif <- data.frame(x = Y$x - X$x, alpha = X$alpha)
+        if (pic == 1) {
+            plot(X, type = "l", xlim = c(min(c(X$x, Y$x)), max(c(X$x, 
+                Y$x))), xlab = " ", ylab = expression(alpha))
+            lines(Y, type = "l")
+        }
+        a <- checking(dif, 0)
+        if (a == 0) {
+            print("Hukuhara difference Y-X does not exist")
+        }
+        if (a == 1) {
+            if (pic == 1) {
+             plot(X, type = "l", xlim = c(min(c(X$x, Y$x)), 
+             max(c(X$x, Y$x))), xlab = NA, ylab = expression(alpha), col = "gray", 
+             main = paste("Hukuhara difference (black) of fuzzy numbers (gray)", 
+                    sep = ""), cex.main = 1)
+                lines(Y, type = "l", col = "gray")
+                lines(dif, type = "l", lwd = 2)
+            }
+            invisible(dif)
+        }
+    }
+  }
+}
 \keyword{ arith }
 \keyword{ manip }

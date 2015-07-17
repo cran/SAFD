@@ -2,8 +2,8 @@ defuzzify <-
 function(XX){
  #function defuzzifies all elements of the list and returns vector of Steiner points
  #weighting measure is uniform one on [0,1], i.e. Lebesgue meassure
- temp_mean<-Mmean(XX,0)
- if(is.null(temp_mean)==0){
+ temp_sum<-Msum(XX,0)
+ if(is.null(temp_sum)==0){
  #subfun:
   defuzz<-function(X){
    #X is fuzzy set that will be defuzzified

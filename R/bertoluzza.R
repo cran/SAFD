@@ -1,11 +1,12 @@
 bertoluzza <-
 function(X,Y,theta=1/3,pic=0){
-  #function calculates bertoluzza distance with weigth theta of X and Y (both polygonial
-  #fuzzy numbers, calculated via translator ->same discretization, same matrix dimensions)
+  #function calculates bertoluzza distance with weigth theta of X and Y 
+  #(both polygonal fuzzy numbers, calculated via translator 
+  #->same discretization, same matrix dimensions)
   #function returns NA in case of any mistake, otherwise the Bertoluzza distance
   #if necessary just use translator(X,nl), translator(Y,nl) first
-  temp_mean<-Mmean(list(X,Y))
-  if(is.null(temp_mean)==0){
+  temp_sum<-Msum(list(X,Y))
+  if(is.null(temp_sum)==0){
    nl<-nrow(X)/2
    z<-X$x-Y$x
    integrand1<-z[1:nl]+z[(2*nl):(nl+1)]
@@ -28,12 +29,12 @@ function(X,Y,theta=1/3,pic=0){
    th<-round(theta,2)
    
    if(pic==1){
-   limx<-c(min(c(X$x,Y$x))-1,max(c(X$x,Y$x))+1)
-    plot(X,type="l", xlim=limx,lwd=1,xlab=" ", ylab=" ",cex.main=1)
+   limx<-c(min(c(X$x,Y$x))-0.25,max(c(X$x,Y$x))+0.25)
+    plot(X,type="l", xlim=limx,lwd=2,xlab=NA, ylab=expression(alpha),cex.main=1)
       titletxt <- substitute(D[th] * "=" * dis ,
       list(th = as.character(th),dis=dis))
       title(main=titletxt,cex.main=1)
-     lines(Y,type="l",lwd=1,col="black")
+     lines(Y,type="l",lwd=2,col="black")
     }
    invisible(distance)
    }

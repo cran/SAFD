@@ -1,5 +1,4 @@
 \name{decomposer}
-\Rdversion{1.1}
 \alias{decomposer}
 \title{
 Decomposer
@@ -19,7 +18,7 @@ decomposer(X)
 See examples
 }
 \value{
-\item{comp1 }{In case checking(X)=1 \code{decomposer} returns a dataframe with (nrow(X+1))-rows (see [1]), otherwise NA is returned}
+In case checking(X)=1 \code{decomposer} returns a dataframe with (nrow(X+1))-rows (see [1]), otherwise NA is returned.
 }
 \references{
 [1] Gonzalez-Rodriguez, G., Colubi, A., Trutschnig, W.: 
@@ -33,15 +32,32 @@ In case you find (almost surely existing) bugs or have recommendations for impro
 }
 
 \seealso{
- See also \code{\link{generator}}, \code{\link{checking}} 
+ See also \code{\link{checking}}, \code{\link{generator}}
 }
 \examples{
+#Example:
  data(XX)
  A<-decomposer(XX[[2]])
  A<-decomposer(XX[[1]])
 head(A)
+## The function is currently defined as
+function (X) 
+{
+    ok <- checking(X)
+    if (ok == 1) {
+        nl <- nrow(X)/2
+        vc <- mean(X$x[nl:(nl + 1)])
+        a <- X$x[1:nl]
+        yl <- vc - a
+        cl <- yl - c(yl[2:nl], 0)
+        b <- X$x[(nl + 1):(2 * nl)]
+        yr <- b - vc
+        cr <- yr - c(0, yr[1:(nl - 1)])
+        Coordinates <- data.frame(coor = c(cl, vc, cr), alpha = c(X$alpha[1:nl], 
+            1, X$alpha[(nl + 1):(2 * nl)]))
+        invisible(Coordinates)
+    }
+  }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
-\keyword{ attribute }
-\keyword{ classes }
+\keyword{ nonparametric }
+\keyword{ datagen }

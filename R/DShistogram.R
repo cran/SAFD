@@ -103,11 +103,11 @@ function(XX,limx=NA,npart=10,nl=101,pic=TRUE,pdf=FALSE){
  Mp<-M[,1:cutindex]
  gridyp<-gridy[1:cutindex]
     
- persp(gridx,gridyp,Mp, xlab="x",  ylab="upper/lower frequency", zlab="alpha",
+ persp(gridx,gridyp,Mp, xlab="x",  ylab="upper/lower frequency", zlab=expression(alpha),
     xlim=limx, main=paste("Histogram 3d",sep=""),cex.main=1,
     theta = -45, phi = 35, expand = 0.35, col=color[facetcol],
     shade = 0.25, ticktype = "detailed",border=NA)
- persp(gridx,gridyp,Mp, xlab="x",  ylab="upper/lower frequency", zlab="alpha",
+ persp(gridx,gridyp,Mp, xlab="x",  ylab="upper/lower frequency", zlab=expression(alpha),
     xlim=limx, main=paste("Histogram 3d",sep=""),cex.main=1,
     theta = 45, phi = 35, expand = 0.35, col=color[facetcol],
     shade = 0.25, ticktype = "detailed",border=NA)
@@ -143,7 +143,7 @@ function(XX,limx=NA,npart=10,nl=101,pic=TRUE,pdf=FALSE){
   Mp<-M[,1:cutindex]
   gridyp<-gridy[1:cutindex]
       
-  persp(gridx,gridyp,Mp, xlab="x",  ylab="upper/lower frequency", zlab="alpha",
+  persp(gridx,gridyp,Mp, xlab="x",  ylab="upper/lower frequency", zlab=expression(alpha),
     xlim=limx, main=paste("Histogram 3d",sep=""),cex.main=1,
     theta = -45, phi = 35, expand = 0.35, col=color[facetcol],
     shade = 0.25, ticktype = "detailed",border=NA)

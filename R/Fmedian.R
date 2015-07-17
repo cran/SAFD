@@ -1,27 +1,42 @@
 Fmedian <-
-function(XX,pic=1){
- k<-length(XX)
- m<-Mmean(XX,pic=0)
- if(is.null(m)==0){
-  Q<-Fquantile(XX,p=c(0.5))[[1]]
-  if(pic==1){
+function(XX,nl=101,pic=1){
+  #calculates the 1-norm median of k=length(XX) polygonal fuzzy numbers with same levels
+  #it is necessary use translator function first to work with a sufficiently large number of alpha levels
+  m<-Mmean(XX)
+  k<-length(XX)
+  if(is.null(m)==0){
+   X<-matrix(0,nrow=2*nl,ncol=k)
+  YY<-vector("list",length=k)
+ for(i in 1:k){
+	YY[[i]]<-translator(XX[[i]],nl=nl)
+      X[,i]<-YY[[i]]$x
+   }
+    Median<-c()
+  for(j in 1:(2*nl)){
+     Median[j]<-as.numeric(median(X[j,1:k]))
+   }
+   #return list containing the median
+   Fmedian<-vector("list",length=1)
+ levels<-seq(0,1,length=nl)
+   Fmedian<-data.frame(x=Median,alpha=c(levels,rev(levels)))
+   if(pic==1){
     #calculate plot limits:
     lower<-rep(0,k)
     upper<-lower
-    for (j in 1:k){
-      lower[j]<-min(XX[[j]])
-      upper[j]<-max(XX[[j]])
+    for (i in 1:k){
+      lower[i]<-min(XX[[i]])
+      upper[i]<-max(XX[[i]])
      }
-    limx<-c(min(lower),max(upper))
-     plot(Q,type="l", xlim=limx,lwd=2,xlab="x", ylab="alpha",cex.main=1, col="red",
-          main=paste("Sample, sample mean (red) and sample median (blue)",sep=""))
-     for (j in 1:k){
-      lines(XX[[j]],type="l",lwd=0.3,col="black")
+    limx<-c(min(lower)-0.25,max(upper)+0.25)
+     plot(XX[[1]],type="l", xlim=limx,xlab=NA, ylab=expression(alpha),cex.main=1,lwd=0.3, col="gray",
+          main=paste("Sample, sample mean (dashed line) and sample median (solid line)",sep=""))
+     for (i in 2:k){
+      lines(XX[[i]],type="l",lwd=0.3,col="gray")
       }
-     lines(m,type="l", lwd=2,col="red")
-     lines(Q,type="l", lwd=2,col="blue")
+     lines(m,type="l", lwd=2,lty="dashed")
+     lines(Fmedian,type="l", lwd=2,lty="solid")
     }
    #end possible plotting---------
-  invisible(Q)
- }
+   invisible(Fmedian)
+  }
 }

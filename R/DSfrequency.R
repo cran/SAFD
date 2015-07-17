@@ -27,7 +27,7 @@ function(XX,IV=c(0,1),pic=1,nl=101){
   if(k==1){
    f<-data.frame(x=c(contained,hitting),alpha=X$alpha)
    if(pic==1){
-     plot(YY[[1]],type="l", lwd=0.1,xlab="x", ylab="alpha",cex.main=1, col="gray50",
+     plot(YY[[1]],type="l", lwd=0.1,xlab="x", ylab=expression(alpha),cex.main=1, col="gray50",
            main=paste("Sample and chosen interval",sep=""))
      Left<-data.frame(x=rep(IV[1],2),alpha=c(-0.05,1.05))
      Right<-data.frame(x=rep(IV[2],2),alpha=c(-0.05,1.05))
@@ -37,7 +37,7 @@ function(XX,IV=c(0,1),pic=1,nl=101){
      dev.new()
      plot(f,type="l",xlim=c(0,1),ylim=c(0,1),
      main=paste("Levelwise Dempster Shafer frequency of the interval [",IV[1], ",",IV[2],"]",sep=""),
-       cex.main=1,xlab="x", ylab="alpha")
+       cex.main=1,xlab="x", ylab=expression(alpha))
        lines(f,type="p",cex=0.2)
      }
    invisible(f)
@@ -66,7 +66,7 @@ function(XX,IV=c(0,1),pic=1,nl=101){
          upper[j]<-max(YY[[j]])
         }
        limx<-c(min(lower),max(upper))
-     plot(YY[[1]],type="l", xlim=limx,lwd=0.1,xlab="x", ylab="alpha",cex.main=1, col="gray50",
+     plot(YY[[1]],type="l", xlim=limx,lwd=0.1,xlab="x", ylab=expression(alpha),cex.main=1, col="gray50",
           main=paste("Sample and chosen interval",sep=""))
       for (j in 2:k){
       lines(YY[[j]],type="l",lwd=0.1,col="gray50")
@@ -78,7 +78,7 @@ function(XX,IV=c(0,1),pic=1,nl=101){
       dev.new()
       plot(f,type="l",xlim=c(0,1),ylim=c(0,1),
       main=paste("Levelwise Dempster Shafer frequency of the interval [",IV[1], ",",IV[2],"]",sep=""),
-      cex.main=1,xlab="x", ylab="alpha")
+      cex.main=1,xlab="x", ylab=expression(alpha))
       lines(f,type="p",cex=0.2)      }
   invisible(f)
  }

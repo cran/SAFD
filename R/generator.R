@@ -39,38 +39,38 @@ function(V,pertV=list(dist="norm",par=c(0,1)),
 #perturbation of left part
   if(pertL$dist=="chisq"){
    if(pertL$par[1]!=1){
-    print("expectation of (left) perturbation must have expectation 1 and be nonnegativ")
+    print("expectation of (left) perturbation must have expectation 1 and be nonnegative")
     }
    perl<-rchisq(nl, 1)
    }
   if(pertL$dist=="lnorm"){
    if(exp(pertL$par[1]+pertL$par[2]^2/2)!=1){
-    print("expectation of (left) perturbation must have expectation 1 and be nonnegativ")
+    print("expectation of (left) perturbation must have expectation 1 and be nonnegative")
     }
    perl<-rlnorm(nl,pertL$par[1],pertL$par[2])
    }  
   if(pertL$dist=="exp"){
    if(pertL$par[1]!=1){
-    print("expectation of (left) perturbation must have expectation 1 and be nonnegativ")
+    print("expectation of (left) perturbation must have expectation 1 and be nonnegative")
     }
    perl<-rexp(nl,pertL$par[1])
    }
 #perturbation of left part   
   if(pertR$dist=="chisq"){
    if(pertR$par[1]!=1){
-    print("expectation of (right) perturbation must have expectation 1 and be nonnegativ")
+    print("expectation of (right) perturbation must have expectation 1 and be nonnegative")
     }
    perr<-rchisq(nl, 1)
    }
   if(pertR$dist=="lnorm"){
    if(exp(pertR$par[1]+pertR$par[2]^2/2)!=1){
-    print("expectation of (left) perturbation must have expectation 1 and be nonnegativ")
+    print("expectation of (right) perturbation must have expectation 1 and be nonnegative")
     }
    perr<-rlnorm(nl,pertR$par[1],pertR$par[2])
    }   
   if(pertR$dist=="exp"){
    if(pertR$par[1]!=1){
-    print("expectation of (right) perturbation must have expectation 1 and be nonnegativ")
+    print("expectation of (right) perturbation must have expectation 1 and be nonnegative")
     }
    perr<-rexp(nl,pertR$par[1])
    }

@@ -1,5 +1,4 @@
 \name{Bcov}
-\Rdversion{1.1}
 \alias{Bcov}
 \title{
 (Sample) Covariance
@@ -10,7 +9,6 @@ The sample covariance of two samples of polygonal fuzzy numbers with respect to 
 \usage{
 Bcov(XX, YY, theta = 1/3)
 }
-%- maybe also 'usage' for other objects documented here.
 \arguments{
   \item{XX}{
 ...list of polygonal fuzzy numbers (the functions implicitly checks the conditions) having the same length as \code{YY} 
@@ -37,9 +35,8 @@ Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 \note{
 In case you find (almost surely existing) bugs or have recommendations for improving the functions comments are welcome to the above mentioned mail addresses.
 }
-
 \seealso{
-See Also as \code{\link{checking}}, \code{\link{Mmean}}, \code{\link{lrmodel}}, \code{\link{Bcor}}, \code{\link{Bvar}}
+See Also as \code{\link{Mmean}},  \code{\link{Bvar}}, \code{\link{lrmodel}}
 }
 \examples{
 #Example 1:
@@ -67,10 +64,78 @@ YY<-XX
    }
 b<-Bcov(XX,YY,1/3)
 b
-b<-Bcor(XX,YY,1/3)
-b
+
+
+#Example 3:
+data(quality)
+Quality_Cov<-Bcov(quality$trees,quality$land,1/3)
+Quality_Cov
+
+
+## The function is currently defined as
+function (XX, YY, theta = 1/3) 
+{
+    kx <- length(XX)
+    ky <- length(YY)
+    if (kx != ky) {
+        print("lists have to have same length (i.e. same sample sizes)")
+    }
+    int_product <- function(x, y) {
+        if (length(x) != length(y)) {
+            return(print("input vectors must have same length"))
+        }
+        if (length(x) == length(y)) {
+            k <- length(x) - 1
+            delta <- 1/k
+            pr <- x * y
+            middle <- (x[1:k] + x[2:(k + 1)]) * (y[1:k] + y[2:(k + 
+                1)])
+            values <- pr[1:k] + pr[2:(k + 1)] + middle
+            integral <- sum(values) * delta/6
+            invisible(integral)
+        }
+    }
+    if (kx == ky) {
+        ZZ <- vector("list", length = (2 * kx))
+        ZZ[1:kx] <- XX[1:kx]
+        ZZ[(kx + 1):(2 * kx)] <- YY[1:kx]
+        temp_sum <- Msum(ZZ)
+        if (nrow(temp_sum) > 1) {
+            k <- length(XX)
+            EX <- Mmean(XX)
+            EY <- Mmean(YY)
+            nl <- nrow(XX[[1]])/2
+            midEX <- 0.5 * (EX$x[1:nl] + EX$x[(2 * nl):(nl + 
+                1)])
+            sprEX <- 0.5 * (EX$x[1:nl] - EX$x[(2 * nl):(nl + 
+                1)])
+            midEY <- 0.5 * (EY$x[1:nl] + EY$x[(2 * nl):(nl + 
+                1)])
+            sprEY <- 0.5 * (EY$x[1:nl] - EY$x[(2 * nl):(nl + 
+                1)])
+            contr_Emids <- int_product(midEX, midEY)
+            contr_Espreads <- int_product(sprEX, sprEY)
+            contr_mids <- rep(0, k)
+            contr_spreads <- rep(0, k)
+            for (i in 1:k) {
+                z <- XX[[i]]$x
+                w <- YY[[i]]$x
+                midX <- 0.5 * (z[1:nl] + z[(2 * nl):(nl + 1)])
+                sprX <- 0.5 * (z[1:nl] - z[(2 * nl):(nl + 1)])
+                midY <- 0.5 * (w[1:nl] + w[(2 * nl):(nl + 1)])
+                sprY <- 0.5 * (w[1:nl] - w[(2 * nl):(nl + 1)])
+                contr_mids[i] <- int_product(midX, midY)/k
+                contr_spreads[i] <- int_product(sprX, sprY)/k
+            }
+            cova <- (sum(contr_mids) - contr_Emids + theta * 
+                (sum(contr_spreads) - contr_Espreads))
+            invisible(cova)
+        }
+    }
+  }
 }
-% Add one or more standard keywords, see file 'KEYWORDS' in the
-% R documentation directory.
+
 \keyword{ regression }
+\keyword{ manip }
 \keyword{ univar }
+
