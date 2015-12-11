@@ -51,61 +51,17 @@ Me<-Fmedian(YY)
 
 #Example 2:
 data(Trees)
-Species1_Median<-Fmedian(Trees[[1]])
+Species1_Median<-Fmedian(Trees[[1]],nl=11)
 Species1_Median
 Species2_Median<-Fmedian(Trees[[2]])
-Species2_Median
 Species3_Median<-Fmedian(Trees[[3]])
-Species3_Median
+
 
 #Example 3:
 data(quality)
 Soilquality_Median<-Fmedian(quality$land)
-Soilquality_Median
 Treesquality_Median<-Fmedian(quality$trees)
-Treesquality_Median
-
-## The function is currently defined as
-function (XX, nl = 101, pic = 1) 
-{
-    m <- Mmean(XX)
-    k <- length(XX)
-    if (is.null(m) == 0) {
-        X <- matrix(0, nrow = 2 * nl, ncol = k)
-        YY <- vector("list", length = k)
-        for (i in 1:k) {
-            YY[[i]] <- translator(XX[[i]], nl = nl)
-            X[, i] <- YY[[i]]$x
-        }
-        Median <- c()
-        for (j in 1:(2 * nl)) {
-            Median[j] <- as.numeric(median(X[j, 1:k]))
-        }
-        Fmedian <- vector("list", length = 1)
-        levels <- seq(0, 1, length = nl)
-        Fmedian <- data.frame(x = Median, alpha = c(levels, rev(levels)))
-        if (pic == 1) {
-            lower <- rep(0, k)
-            upper <- lower
-            for (i in 1:k) {
-                lower[i] <- min(XX[[i]])
-                upper[i] <- max(XX[[i]])
-            }
-            limx <- c(min(lower) - 0.25, max(upper) + 0.25)
-        plot(XX[[1]], type = "l", xlim = limx, xlab = NA, 
-            ylab = expression(alpha), cex.main = 1, lwd = 0.3, col = "gray", 
-            main = paste("Sample, sample mean(dashed) and sample median(solid)", 
-                 sep = ""))
-        for (i in 2:k) {
-               lines(XX[[i]], type = "l", lwd = 0.3, col = "gray")
-           }
-            lines(m, type = "l", lwd = 2, lty = "dashed")
-            lines(Fmedian, type = "l", lwd = 2, lty = "solid")
-        }
-        invisible(Fmedian)
-    }
-  }
 }
+
 \keyword{ univar }
 \keyword{ manip }
-

@@ -26,10 +26,10 @@ function(X,nl=101,pic=0){
   E<-rbind(L4,R4)
   if(pic==1){
   limx<-c(min(c(X$x,E$x))-0.25,max(c(X$x,E$x))+0.25)
- plot(X,type="l",xlim=limx, xlab=NA, ylab=expression(alpha), col="gray", lwd=1.5, cex.main=1)
-  titletxt <- substitute("Fuzzy number (in gray) and their " * nl * "-Translator (in black)" , list(nl = as.character(nl)))
+ plot(X,type="l",xlim=limx, xlab=NA, ylab=expression(alpha), lwd=2, cex.main=1)
+  titletxt <- substitute("Fuzzy number and their " * nl * "-Translator (in red)" , list(nl = as.character(nl)))
       title(main=titletxt,cex.main=1)
- lines(E,type="b",lwd=2,  pch = 21)
+ lines(E,type="b",lwd=3, col="red", pch = 21)
    }
   invisible(E)
  }

@@ -1,5 +1,5 @@
 btest2.mean <-
-function(XX,YY,theta=1/3,B=1000,pic=1){
+function(XX,YY,theta=1/3,B=100,pic=1){
  #XX, YY ... independent samples
  #theta ... is weight in the def of the bertoluzza metric
  #B...number of bootstrap replicates
@@ -26,9 +26,10 @@ function(XX,YY,theta=1/3,B=1000,pic=1){
    lower<-min(sample_mean_XX$x[1],sample_mean_YY$x[1])
    upper<-max(sample_mean_XX$x[2*nl],sample_mean_YY$x[2*nl])
    limx<-c(min(lower)-0.25,max(upper)+0.25)
-   plot(sample_mean_XX,type="l", xlim=limx,lwd=2,xlab=NA, ylab=expression(alpha),cex.main=1, lty="solid",
-          main=paste("Sample mean first sample (solid line) and second sample (dashed line)",sep=""))
-   lines(sample_mean_YY,type="l", lwd=2,lty="dashed")
+   plot(sample_mean_XX,type="l", xlim=limx,lwd=2,xlab=NA, ylab=expression(alpha),cex.main=1, col="black",
+
+          main=paste("Sample mean 1st sample (in black) and 2nd sample (in red)",sep=""))
+   lines(sample_mean_YY,type="l", lwd=2,col="red")
    }
   XXstar<-vector("list",length=n1obs)
    for (i in 1:n1obs){
@@ -65,9 +66,9 @@ function(XX,YY,theta=1/3,B=1000,pic=1){
    limx<-c(min(c(boot_test_statistic,test_statistic)),max(c(boot_test_statistic,test_statistic)))
    plot(ecdf(boot_test_statistic),xlab=NA,ylab=NA,xlim=limx, do.points = FALSE, main=paste("Ecdf of T*"),cex.main=1,lwd=1.5)
     #cex.axis=1.3,cex.lab=1.3)
-   abline(a = NULL, b = NULL, v = test_statistic,lty="dotted",lwd=3)
+   abline(a = NULL, b = NULL, v = test_statistic,col="red")
    TS<-test_statistic
-   mtext(paste("T=",round(TS,2),sep=""), at = TS,  side = 1, line = 2, col = "black", bg="white",cex=1.3)
+   mtext(paste("T=",round(TS,2),sep=""), at = TS,  side = 1, line = 2, col = "red", bg="white",cex=1.3)
    }
   pvalue<-mean(test_statistic<boot_test_statistic)
  invisible(pvalue)

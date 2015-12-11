@@ -24,17 +24,17 @@ function(XX,nl=101,pic=1){
     lower<-rep(0,k)
     upper<-lower
     for (i in 1:k){
-      lower[i]<-min(XX[[i]])
-      upper[i]<-max(XX[[i]])
+      lower[i]<-min(XX[[i]]$x)
+      upper[i]<-max(XX[[i]]$x)
      }
     limx<-c(min(lower)-0.25,max(upper)+0.25)
-     plot(XX[[1]],type="l", xlim=limx,xlab=NA, ylab=expression(alpha),cex.main=1,lwd=0.3, col="gray",
-          main=paste("Sample, sample mean (dashed line) and sample median (solid line)",sep=""))
+     plot(XX[[1]],type="l", xlim=limx,xlab=NA, ylab=expression(alpha),cex.main=1,lwd=1,
+          main=paste("Sample, sample mean (blue) and sample median (red)",sep=""))
      for (i in 2:k){
-      lines(XX[[i]],type="l",lwd=0.3,col="gray")
+      lines(XX[[i]],type="l",lwd=1)
       }
-     lines(m,type="l", lwd=2,lty="dashed")
-     lines(Fmedian,type="l", lwd=2,lty="solid")
+     lines(m,type="l", lwd=2.5,col="blue")
+     lines(Fmedian,type="l", lwd=3,col="red")
     }
    #end possible plotting---------
    invisible(Fmedian)

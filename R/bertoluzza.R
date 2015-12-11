@@ -34,7 +34,7 @@ function(X,Y,theta=1/3,pic=0){
       titletxt <- substitute(D[th] * "=" * dis ,
       list(th = as.character(th),dis=dis))
       title(main=titletxt,cex.main=1)
-     lines(Y,type="l",lwd=2,col="black")
+     lines(Y,type="l",lwd=2)
     }
    invisible(distance)
    }

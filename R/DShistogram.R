@@ -63,8 +63,8 @@ function(XX,limx=NA,npart=10,nl=101,pic=TRUE,pdf=FALSE){
   lower<-rep(0,k)
   upper<-lower
   for (j in 1:k){
-   lower[j]<-min(XX[[j]])
-   upper[j]<-max(XX[[j]])
+   lower[j]<-min(XX[[j]]$x)
+   upper[j]<-max(XX[[j]]$x)
    }
   lim_temp<-c(min(lower),max(upper))
   
@@ -116,7 +116,7 @@ function(XX,limx=NA,npart=10,nl=101,pic=TRUE,pdf=FALSE){
           col=rainbow(100,start=.7,end=.17),cex.axis=1,
           main=paste("Histogram level view","\n",
             "(black lines denote 1-cut, white lines 0.5-cut)",sep=""),cex.main=1)
- contour(gridx,gridyp,Mp, xlab="",  ylab="", xlim=limx,lwd=c(1.5,1.5),
+ contour(gridx,gridyp,Mp, xlab=NA,  ylab=NA, xlim=limx,lwd=c(1.5,1.5),
         levels = seq(0.5,1,by=0.5), add = TRUE, col = c("white","black"),
          lty = c(1,1), drawlabels=FALSE)
 

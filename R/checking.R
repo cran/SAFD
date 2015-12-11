@@ -21,8 +21,8 @@ function(X,com=1){
   if(min(X$alpha)!=0 | max(X$alpha)!=1) {
   temp[2]<-0
   if(com==1){
-   print(paste("input defines no polygonal fuzzy number - max alpha-value has to be 1, min 0"))
-   }
+   print(paste("input defines no polygonal fuzzy number:"))
+    print(paste("max alpha-value has to be 1, min 0"))}
    invisible(c(0))
   }
   }
@@ -32,7 +32,7 @@ function(X,com=1){
   if(all(complete.cases(X$x))==FALSE) {
     temp[3]<-0
      if(com==1){
-    print(paste("input defines missing value",sep=""))
+    print(paste("input defines missing value"))
      }
     invisible(c(0))
      }
@@ -45,8 +45,8 @@ function(X,com=1){
   if(min(shifted-dat)< -.Machine$double.eps^0.5) {
     temp[4]<-0
     if(com==1){
-     print(paste("input defines no polygonal fuzzy number - x values must be non-decreasing",sep=""))
-    }
+     print(paste("input defines no polygonal fuzzy number:"))
+      print(paste("x values must be non-decreasing"))}
     invisible(c(0))
    }
   }
@@ -65,8 +65,8 @@ function(X,com=1){
   if(min(shifted-dat)<0|length(difference)>0) {
    temp[5]<-0
    if(com==1){
-    print(paste("input defines no polygonal fuzzy number - alpha-levels must increase from 0 to 1 and decrease from 1 to 0"))
-    }
+    print(paste("input defines no polygonal fuzzy number:"))
+     print(paste("alpha-levels must increase from 0 to 1 and decrease from 1 to 0"))}
     invisible(c(0))
    }
   } 
@@ -77,8 +77,8 @@ function(X,com=1){
   if(min(dat-shifted)<0) {
    temp[6]<-0
    if(com==1){
-   print(paste("input defines no polygonal fuzzy number - alpha-levels must increase from 0 to 1 and decrease from 1 to 0"))
-   }
+   print(paste("input defines no polygonal fuzzy number:"))
+     print(paste("alpha-levels must increase from 0 to 1 and decrease from 1 to 0"))}
    invisible(c(0))
   }
  } 
@@ -87,8 +87,9 @@ function(X,com=1){
    if(nl!=trunc(nl,0)|max(abs(X$alpha[1:nl]-X$alpha[(2*nl):(nl+1)]))>0){
     temp[7]<-0
     if(com==1){
-      print(paste("input fuzzy number is not of the desired form (even number nr of rows and X$alpha[1:(nr/2)]=X$alpha[nr:(nr/2+1)])"))
-      print(paste("use translator function to convert in the correct form"))
+      print(paste("input fuzzy number is not of the desired form:"))
+      print(paste("even number nr of rows and X$alpha[1:(nr/2)]=X$alpha[nr:(nr/2+1)]."))
+      print(paste("Use translator function to convert in the correct form"))
     }
     invisible(c(0))
    }

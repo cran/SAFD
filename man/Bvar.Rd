@@ -67,27 +67,7 @@ Soilquality_Var<-Bvar(quality$land,1)
 Soilquality_Var
 Treesquality_Var<-Bvar(quality$trees,1)
 Treesquality_Var
-
-## The function is currently defined as
-function (XX, theta = 1/3) 
-{
-    sample_mean <- Mmean(XX, 0)
-    if (is.null(sample_mean) == 0) {
-        if (length(XX) == 1) {
-            v <- 0
-        }
-        if (length(XX) >= 2) {
-            k <- length(XX)
-            temp <- rep(0, k)
-            for (i in 1:k) {
-                temp[i] <- (bertoluzza(XX[[i]], sample_mean, 
-                  theta, 0))^2
-            }
-            v <- mean(temp)
-        }
-        invisible(v)
-    }
-  }
 }
+
 \keyword{ manip }
 \keyword{ univar }

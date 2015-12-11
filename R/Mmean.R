@@ -14,16 +14,16 @@ function(XX,pic=0){
        lower<-rep(0,k)
        upper<-lower
         for (j in 1:k){
-         lower[j]<-min(XX[[j]])
-         upper[j]<-max(XX[[j]])
+         lower[j]<-min(XX[[j]]$x)
+         upper[j]<-max(XX[[j]]$x)
         }
        limx<-c(min(lower)-0.25,max(upper)+0.25)
-     plot(XX[[1]],type="l", xlim=limx,lwd=0.3,xlab=NA, ylab=expression(alpha),cex.main=1, col="gray",
-          main=paste("Sample (in gray) and sample mean (in black)",sep=""))
+     plot(XX[[1]],type="l", xlim=limx,lwd=1,xlab=NA, ylab=expression(alpha),cex.main=1, 
+          main=paste("Sample and sample mean (in red)",sep=""))
      for (j in 2:k){
-      lines(XX[[j]],type="l",lwd=0.3,col="gray")
+      lines(XX[[j]],type="l",lwd=1)
       }
-     lines(X2,type="l",lwd=2,col="black")
+     lines(X2,type="l",lwd=3,col="red")
 
     }
    #end possible plotting------------------------------------------------------

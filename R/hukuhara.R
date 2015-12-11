@@ -1,5 +1,5 @@
 hukuhara <-
-function(X,Y,pic=1){
+function(X,Y,pic=0){
  #it is checked if the hukuhara difference Y-X exists and if yes it is calculated and returned
  #first check validity of input data
  temp_sum<-Msum(list(X,Y))
@@ -10,7 +10,7 @@ function(X,Y,pic=1){
   #family of intervals is decreasing in alpha ->if yes then return the polygonal fuzzy number that
   #is the hukuhara diff
   if(pic==1){
-    plot(X,type="l",xlim=c(min(c(X$x,Y$x)),max(c(X$x,Y$x))),xlab=" ", ylab=expression(alpha))
+    plot(X,type="l",xlim=c(min(c(X$x,Y$x)),max(c(X$x,Y$x))),xlab=NA, ylab=expression(alpha))
     lines(Y,type="l")
     }
     a<-checking(dif,0)
@@ -19,10 +19,10 @@ function(X,Y,pic=1){
    }
  if(a==1){
   if(pic==1){
-   plot(X,type="l",xlim=c(min(c(X$x,Y$x)),max(c(X$x,Y$x))),xlab=NA, ylab=expression(alpha),col="gray",
-      main=paste("Hukuhara difference (in black) of fuzzy numbers (in gray)",sep=""),cex.main=1)
-   lines(Y,type="l",col="gray")
-   lines(dif,type="l",lwd=2)
+   plot(X,type="l",xlim=c(min(c(X$x,Y$x)),max(c(X$x,Y$x))),xlab=NA, ylab=expression(alpha),
+        lwd=2, main=paste("Fuzzy numbers and their Hukuhara difference (in red)",sep=""),cex.main=1)
+   lines(Y,type="l",lwd=2)
+   lines(dif,type="l",lwd=3,col="red")
    }
   invisible(dif)
   }

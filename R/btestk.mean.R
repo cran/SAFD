@@ -58,14 +58,13 @@ function(XXX, sel, theta=1/3,B=100,pic=1){
    legend_name<-paste(rep("group ",ks),sel,sep="")
    limx<-c(lower,upper)+c(0,(upper-lower)/4)
    color<- colorRampPalette( c("green","blue","red"))(ks)
-   plot(total_mean,type="l", xlim=limx,lwd=2,xlab=NA, ylab=expression(alpha), col="black",
+   plot(total_mean,type="l", xlim=limx,lwd=3,xlab=NA, ylab=expression(alpha), col="black",
           main=paste("Total mean (black) and group means","\n", 
           "(group mean colour ranging from green to blue to red)",sep=""),
           cex.main=1)
    for (i in 1:ks){
-   lines(sample_mean[[i]],type="l", lwd=1.5,col=color[i])
+   lines(sample_mean[[i]],type="l", lwd=2,col=color[i])
    }
-   lines(total_mean,type="l",col="black",lwd=2)
    if(ks<=10){
     legend(upper, 1, legend_name, col = color, text.col = "black", lty = rep(1,ks),cex=0.8)
    }
@@ -124,7 +123,7 @@ function(XXX, sel, theta=1/3,B=100,pic=1){
    boot_total_mean[[b]] <- sc_mult(Msum(boot_sample_sum[[b]]),1/sum(nobs))
 	 boot_total_variance[[b]] <- sum(boot_sample_variance[[b]])
 	 temp<-rep(0,ks)
-	  for (m in 1:ks){
+	  for (i in 1:ks){
 	   temp[i]<-bertoluzza(boot_sample_mean[[b]][[i]],boot_total_mean[[b]],theta)^2
     }
 	 boot_test_statistic[b] <- sum(nobs*temp)/boot_total_variance[b]
@@ -134,9 +133,9 @@ function(XXX, sel, theta=1/3,B=100,pic=1){
    limx<-c(min(c(boot_test_statistic,test_statistic)),max(c(boot_test_statistic,test_statistic)))
       plot(ecdf(boot_test_statistic),xlab=NA,ylab=NA,xlim=limx, do.points = FALSE, main=paste("Ecdf of T*"),cex.main=1,lwd=1.5)
     #cex.axis=1.3,cex.lab=1.3)
-   abline(a = NULL, b = NULL, v = test_statistic,lty="dotted",lwd=3)
+   abline(a = NULL, b = NULL, v = test_statistic,,col="red")
    TS<-test_statistic
-   mtext(paste("T=",round(TS,2),sep=""), at = TS,  side = 1, line = 2, col = "black", bg="white",cex=1.3)
+   mtext(paste("T=",round(TS,2),sep=""), at = TS,  side = 1, line = 2, col = "red", bg="white",cex=1.3)
   }
   pvalue<-mean(test_statistic<boot_test_statistic)
   invisible(pvalue)

@@ -7,7 +7,7 @@ Quality dataset
 \description{
 \code{quality} is a list with two sublists, each of which consists of a sample of n=10 trapezoidal fuzzy numbers what corresponds to the quality of the lands and the trees within a study about the progress of reforestation in a given area of Asturias (Spain) carried out by the INDUROT institute (University of Oviedo). For details see [1] below and \code{Trees} dataset. 
 }
-\usage{data(quality)}
+\usage{data("quality")}
 \format{
  A list with two sublist, each of which contains trapezoidal fuzzy numbers.
 }

@@ -51,16 +51,16 @@ function(XX,pic=0){
        lower<-rep(0,k)
        upper<-lower
         for (j in 1:k){
-         lower[j]<-min(XX[[j]])
-         upper[j]<-max(XX[[j]])
+         lower[j]<-min(XX[[j]]$x)
+         upper[j]<-max(XX[[j]]$x)
         }
        limx<-c(min(c(lower,R$x))-0.25,max(c(upper,R$x))+0.25)
-     plot(XX[[1]],type="l", xlim=limx,lwd=0.3,xlab=NA, ylab=expression(alpha),cex.main=1, col="gray",
-          main=paste("Sum (in black) of fuzzy numbers (in gray)",sep=""))
+     plot(XX[[1]],type="l",lwd=2, xlim=limx,xlab=NA, ylab=expression(alpha),cex.main=1,
+          main=paste("Sum (in red) of fuzzy numbers",sep=""))
      for (j in 2:k){
-      lines(XX[[j]],type="l",lwd=0.3,col="gray")
+      lines(XX[[j]],type="l",lwd=2)
       }
-     lines(R,type="l",lwd=2,col="black")
+     lines(R,type="l",lwd=3,col="red")
 
     }
    #end possible plotting------------------------------------------------------

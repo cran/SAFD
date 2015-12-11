@@ -7,7 +7,7 @@ Example data
 \description{
 \code{XX} is a list of three polygonal fuzzy numbers that is used in the given examples.
 }
-\usage{data(XX)}
+\usage{data("XX")}
 \format{
   List of three polygonal fuzzy numbers.
 }
