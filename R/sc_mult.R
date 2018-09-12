@@ -22,7 +22,7 @@ function(X,b,pic=0){
   if(pic==1){
      limx<-c(min(c(X$x,E$x))-0.25,max(c(X$x,E$x))+0.25)
   plot(X,type="l",xlim=limx, xlab=NA, ylab=expression(alpha),lwd=2, cex.main=1)
-  titletxt <- substitute("Fuzzy number and their product by " * b * " (in red)" , list(b = as.character(b)))
+  titletxt <- substitute("Fuzzy number and its product by " * b * " (in red)" , list(b = as.character(b)))
       title(main=titletxt,cex.main=1)
  lines(E,type="l",lwd=3,col="red")
    }

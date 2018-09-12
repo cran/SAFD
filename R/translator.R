@@ -27,7 +27,7 @@ function(X,nl=101,pic=0){
   if(pic==1){
   limx<-c(min(c(X$x,E$x))-0.25,max(c(X$x,E$x))+0.25)
  plot(X,type="l",xlim=limx, xlab=NA, ylab=expression(alpha), lwd=2, cex.main=1)
-  titletxt <- substitute("Fuzzy number and their " * nl * "-Translator (in red)" , list(nl = as.character(nl)))
+  titletxt <- substitute("Fuzzy number and its " * nl * "-Translator (in red)" , list(nl = as.character(nl)))
       title(main=titletxt,cex.main=1)
  lines(E,type="b",lwd=3, col="red", pch = 21)
    }

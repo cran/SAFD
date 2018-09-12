@@ -3,27 +3,22 @@
 \alias{SAFD}
 \docType{package}
 \title{
-Statistical Analysis of Fuzzy Data
+\packageTitle{SAFD}
 }
 \description{
-The aim of the package is to provide some basic functions for doing statistics with 
-one-dimensional Fuzzy Data (in the form of polygonal fuzzy numbers).
+\packageDescription{SAFD}
 }
 \details{
-\tabular{ll}{
-Package: \tab SAFD\cr
-Type: \tab Package\cr
-Version: \tab 1.0.1\cr
-Date: \tab 2015-12-10\cr
-License: \tab GPL (>=2)\cr
-}
-The aim of the package is to provide some basic functions for doing statistics with one dimensional Fuzzy Data (in the form of polygonal fuzzy numbers). In particular, the package contains functions for the basic operations on the class of fuzzy numbers (sum, scalar product, mean, median, Hukuhara difference) as well as for calculating (Bertoluzza) distance, sample variance, sample covariance, and the Dempster-Shafer (levelwise) histogram. Moreover a function to simulate fuzzy random variables, bootstrap tests for the equality of means, and a function to do linear regression given trapezoidal fuzzy data is included.\cr
-Version 1.0 fixes some bugs of previous versions.
-}
-\author{
-Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 
-Maintainer: Asun Lubiano <lubiano@uniovi.es>
+The DESCRIPTION file:
+\packageDESCRIPTION{SAFD}
+\packageIndices{SAFD}
+The aim of the package is to provide some basic functions for doing statistics with one dimensional Fuzzy Data (in the form of polygonal fuzzy numbers). In particular, the package contains functions for the basic operations on the class of fuzzy numbers (sum, scalar product, mean, median, Hukuhara difference) as well as for calculating (Bertoluzza) distance and sample variance. Moreover a function to simulate fuzzy random variables and bootstrap tests for the equality of means is included.\cr
+Version 2.0 fixes some bugs of previous versions.
+}
+\author{\packageAuthor{SAFD}
+
+Maintainer: \packageMaintainer{SAFD}
 }
 \references{
  [1] Bertoluzza, C., Corral, N., Salas, A.: \emph{On a new class of distances between fuzzy numbers}, Mathware Soft Comput., 2, pp. 71-84 (1995)\cr

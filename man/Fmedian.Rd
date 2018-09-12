@@ -55,12 +55,6 @@ Species1_Median<-Fmedian(Trees[[1]],nl=11)
 Species1_Median
 Species2_Median<-Fmedian(Trees[[2]])
 Species3_Median<-Fmedian(Trees[[3]])
-
-
-#Example 3:
-data(quality)
-Soilquality_Median<-Fmedian(quality$land)
-Treesquality_Median<-Fmedian(quality$trees)
 }
 
 \keyword{ univar }

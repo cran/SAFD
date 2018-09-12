@@ -34,7 +34,7 @@ Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 In case you find (almost surely existing) bugs or have recommendations for improving the functions comments are welcome to the above mentioned mail addresses.
 }
 \seealso{
-See Also as \code{\link{bertoluzza}}, \code{\link{Mmean}}, \code{\link{Bcov}}
+See Also as \code{\link{bertoluzza}}, \code{\link{Mmean}}
 }
 \examples{
 #Example 1:
@@ -59,14 +59,6 @@ Species2_Var<-Bvar(Trees$species2,1/3)
 Species2_Var
 Species3_Var<-Bvar(Trees$species3,1/3)
 Species3_Var
-
-
-#Example 4:
-data(quality)
-Soilquality_Var<-Bvar(quality$land,1)
-Soilquality_Var
-Treesquality_Var<-Bvar(quality$trees,1)
-Treesquality_Var
 }
 
 \keyword{ manip }

@@ -34,7 +34,7 @@ In case you find (almost surely existing) bugs or have recommendations for impro
 }
 
 \seealso{
-See Also as \code{\link{checking}}, \code{\link{Msum}}, \code{\link{lrmodel}}
+See Also as \code{\link{checking}}, \code{\link{Msum}}
 }
 \examples{
 #Example 1:

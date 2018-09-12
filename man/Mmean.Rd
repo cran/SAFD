@@ -52,13 +52,6 @@ Species2_Mean<-Mmean(Trees[[2]],1)
 Species2_Mean
 Species3_Mean<-Mmean(Trees[[3]],1)
 Species3_Mean
-
-#Example 3:
-data(quality)
-Soilquality_Mean<-Mmean(quality$land,1)
-Soilquality_Mean
-Treesquality_Mean<-Mmean(quality$trees,1)
-Treesquality_Mean
 }
 
 \keyword{ univar }

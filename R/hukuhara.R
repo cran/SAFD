@@ -20,7 +20,7 @@ function(X,Y,pic=0){
  if(a==1){
   if(pic==1){
    plot(X,type="l",xlim=c(min(c(X$x,Y$x)),max(c(X$x,Y$x))),xlab=NA, ylab=expression(alpha),
-        lwd=2, main=paste("Fuzzy numbers and their Hukuhara difference (in red)",sep=""),cex.main=1)
+        lwd=2, main=paste("Fuzzy numbers and its Hukuhara difference (in red)",sep=""),cex.main=1)
    lines(Y,type="l",lwd=2)
    lines(dif,type="l",lwd=3,col="red")
    }

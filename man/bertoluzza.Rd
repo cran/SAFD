@@ -42,7 +42,7 @@ Wolfgang Trutschnig <wolfgang@trutschnig.net>, Asun Lubiano <lubiano@uniovi.es>
 In case you find (almost surely existing) bugs or have recommendations for improving the functions comments are welcome to the above mentioned mail addresses.
 }
 \seealso{
-See Also as \code{\link{checking}}, \code{\link{Mmean}}, \code{\link{Bvar}}, \code{\link{Bcov}}
+See Also as \code{\link{checking}}, \code{\link{Mmean}}, \code{\link{Bvar}}
 }
 \examples{
 #Example 1:
