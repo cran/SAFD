@@ -6,15 +6,19 @@
 \packageTitle{SAFD}
 }
 \description{
-\packageDescription{SAFD}
+The aim of the package is to provide some basic functions for doing statistics with 
+one-dimensional Fuzzy Data (in the form of polygonal fuzzy numbers).
 }
 \details{
-
-The DESCRIPTION file:
-\packageDESCRIPTION{SAFD}
-\packageIndices{SAFD}
+\tabular{ll}{
+Package: \tab SAFD\cr
+Type: \tab Package\cr
+Version: \tab 2.1\cr
+Date: \tab 2019-07-03\cr
+License: \tab GPL (>=2)\cr
+}
 The aim of the package is to provide some basic functions for doing statistics with one dimensional Fuzzy Data (in the form of polygonal fuzzy numbers). In particular, the package contains functions for the basic operations on the class of fuzzy numbers (sum, scalar product, mean, median, Hukuhara difference) as well as for calculating (Bertoluzza) distance and sample variance. Moreover a function to simulate fuzzy random variables and bootstrap tests for the equality of means is included.\cr
-Version 2.0 fixes some bugs of previous versions.
+Version 2.1 fixes some bugs of previous versions.
 }
 \author{\packageAuthor{SAFD}
 
@@ -37,6 +41,6 @@ Maintainer: \packageMaintainer{SAFD}
 }
 \keyword{ package }
 \seealso{
-\url{http://bellman.ciencias.uniovi.es/SMIRE/}
+\url{http://bellman.ciencias.uniovi.es/smire+codire/}
 }
 

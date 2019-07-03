@@ -45,31 +45,6 @@ function(XXX, sel, theta=1/3,B=100,pic=1){
 	  sample_variance[i]<-Bvar(YYY[[i]],theta)
    }
   total_mean <- sc_mult(Msum(sample_sum),1/sum(nobs))
- 
-  #optional plotting of the group means
-  #in case of at most 10 groups a legend is plotted
-  if(pic==1){
-    lower<-sample_mean[[1]]$x[1]
-    upper<-sample_mean[[1]]$x[2*nl]
-    for (i in 2:ks){
-       lower<-min(lower,sample_mean[[i]]$x[1])
-       upper<-max(upper,sample_mean[[i]]$x[2*nl])
-    }
-   legend_name<-paste(rep("group ",ks),sel,sep="")
-   limx<-c(lower,upper)+c(0,(upper-lower)/4)
-   color<- colorRampPalette( c("green","blue","red"))(ks)
-   plot(total_mean,type="l", xlim=limx,lwd=3,xlab=NA, ylab=expression(alpha), col="black",
-          main=paste("Total mean (black) and group means","\n", 
-          "(group mean colour ranging from green to blue to red)",sep=""),
-          cex.main=1)
-   for (i in 1:ks){
-   lines(sample_mean[[i]],type="l", lwd=2,col=color[i])
-   }
-   if(ks<=10){
-    legend(upper, 1, legend_name, col = color, text.col = "black", lty = rep(1,ks),cex=0.8)
-   }
-  }
-
   total_variance <- sum(sample_variance)
 
   temp<-rep(0,ks)
@@ -106,7 +81,7 @@ function(XXX, sel, theta=1/3,B=100,pic=1){
   boot_test_statistic<-rep(0,B)
 
 	for (b in 1:B){
-	 print(b)
+	 #print(b)
 	 boot_sample[[b]]<-list()
 	 boot_sample_mean[[b]]<-list()
 	 boot_sample_sum[[b]]<-list()
@@ -128,16 +103,32 @@ function(XXX, sel, theta=1/3,B=100,pic=1){
     }
 	 boot_test_statistic[b] <- sum(nobs*temp)/boot_total_variance[b]
   }
-  if(pic==1){
-   dev.new()
-   limx<-c(min(c(boot_test_statistic,test_statistic)),max(c(boot_test_statistic,test_statistic)))
-      plot(ecdf(boot_test_statistic),xlab=NA,ylab=NA,xlim=limx, do.points = FALSE, main=paste("Ecdf of T*"),cex.main=1,lwd=1.5)
-    #cex.axis=1.3,cex.lab=1.3)
-   abline(a = NULL, b = NULL, v = test_statistic,,col="red")
-   TS<-test_statistic
-   mtext(paste("T=",round(TS,2),sep=""), at = TS,  side = 1, line = 2, col = "red", bg="white",cex=1.3)
-  }
+ 
   pvalue<-mean(test_statistic<boot_test_statistic)
+  
+  #optional plotting of the group means
+  #in case of at most 10 groups a legend is plotted
+  if(pic==1){
+    lower<-sample_mean[[1]]$x[1]
+    upper<-sample_mean[[1]]$x[2*nl]
+    for (i in 2:ks){
+      lower<-min(lower,sample_mean[[i]]$x[1])
+      upper<-max(upper,sample_mean[[i]]$x[2*nl])
+    }
+    legend_name<-paste(rep("group ",ks),sel,sep="")
+    limx<-c(lower,upper)+c(0,(upper-lower)/4)
+    color<- colorRampPalette( c("green","blue","red"))(ks)
+    plot(total_mean,type="l", xlim=limx,lwd=3,xlab="Total mean (black) and group means", ylab=expression(alpha), col="black",cex.main=1)
+    
+        for (i in 1:ks){
+      lines(sample_mean[[i]],type="l", lwd=2,col=color[i])
+    }
+titletxt <- substitute(p-value * "=" * pvalue ,list(pvalue=pvalue))
+title(main=titletxt)
+if(ks<=10){
+      legend(upper, 1, legend_name, col = color, text.col = "black", lty = rep(1,ks),cex=0.8)
+    }
+  }
   invisible(pvalue)
  }
  }

@@ -27,3 +27,4 @@ b<-bertoluzza(M,V,1/3,1)
 b 
 }
 \keyword{datasets}
+
